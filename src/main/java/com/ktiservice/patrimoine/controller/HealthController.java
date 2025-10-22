@@ -1,4 +1,4 @@
-package com.ktiservice.patrimoine.infrastructure.adapter.in.web.controller;
+package com.ktiservice.patrimoine.controller;
 
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.web.bind.annotation.GetMapping;
