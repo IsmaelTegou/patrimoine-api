@@ -1,0 +1,229 @@
+# =============================================
+# Spring Boot Application Configuration
+# Heritage Management Platform
+# =============================================
+
+spring:
+  application:
+    name: patrimoine
+
+  # =============================================
+  # JPA & Hibernate Configuration
+  # =============================================
+  jpa:
+    hibernate:
+      ddl-auto: update  # Use Flyway for migrations
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+        jdbc:
+          batch_size: 20
+          fetch_size: 50
+        order_inserts: true
+        order_updates: true
+        # Enable parameterized inserts for better performance
+        use_sql_comments: true
+    show-sql: false
+    open-in-view: false  # Prevent lazy loading issues
+
+  # =============================================
+  # DataSource Configuration
+  # =============================================
+  datasource:
+    url: jdbc:postgresql://localhost:5432/patrimoine_db
+    username: ismael
+    password: ismael
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      maximum-pool-size: 20
+      minimum-idle: 5
+      idle-timeout: 600000
+      max-lifetime: 1800000
+      connection-timeout: 30000
+      leak-detection-threshold: 60000
+
+  # =============================================
+  # Cache Configuration (Caffeine)
+  # =============================================
+  cache:
+    type: caffeine
+    caffeine:
+      spec: maximumSize=1000,expireAfterWrite=600s
+    cache-names:
+      - users
+      - heritage-sites
+      - reviews
+      - itineraries
+      - events
+      - guides
+      - reports
+
+  # =============================================
+  # Jackson Configuration (JSON)
+  # =============================================
+  jackson:
+    serialization:
+      indent-output: false
+      write-dates-as-timestamps: false
+     # default-property-inclusion: non_null
+    deserialization:
+      fail-on-unknown-properties: false
+    timezone: UTC
+
+  # =============================================
+  # Servlet Configuration
+  # =============================================
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 100MB
+
+  # =============================================
+  # Security Configuration
+  # =============================================
+  security:
+    user:
+      name: admin
+      password: admin_password  # Change in production
+
+# =============================================
+# Server Configuration
+# =============================================
+server:
+  port: 5014
+  error:
+    include-message: always
+    include-binding-errors: always
+    include-stacktrace: on_param
+    include-exception: false
+  compression:
+    enabled: true
+    min-response-size: 1024
+    mime-types:
+      - application/json
+      - application/xml
+      - text/html
+      - text/xml
+      - text/plain
+
+# =============================================
+# Actuator Configuration (Health & Metrics)
+# =============================================
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,env
+      base-path: /actuator
+  endpoint:
+    health:
+      show-details: when-authorized
+      probes:
+        enabled: true
+    env:
+      enabled: true
+  health:
+    livenessState:
+      enabled: true
+    readinessState:
+      enabled: true
+
+# =============================================
+# Logging Configuration
+# =============================================
+logging:
+  level:
+    root: INFO
+    com.ktiservice.patrimoine: DEBUG
+    org.springframework.web: INFO
+    org.springframework.security: DEBUG
+    org.hibernate: WARN
+  pattern:
+    console: "%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n"
+    file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+  file:
+    name: logs/patrimoine.log
+    max-size: 10MB
+    max-history: 30
+
+# =============================================
+# Application Properties
+# =============================================
+app:
+  # JWT Configuration
+  jwt:
+    secret-key: "your-super-secret-key-change-in-production-at-least-32-chars-long!"
+    expiration-time: 86400000  # 24 hours in milliseconds (24 * 60 * 60 * 1000)
+    refresh-token-expiration-time: 604800000  # 7 days in milliseconds
+    algorithm: RS256  # RSA Signing (asymmetric)
+
+  # Encryption Configuration (AES-256)
+  encryption:
+    algorithm: AES
+    key-size: 256
+    salt-length: 16
+    # Store your encryption key securely (environment variable recommended)
+    secret-key: "your-encryption-secret-key-min-32-chars-long-change-in-prod!"
+
+  # Pagination Configuration
+  pagination:
+    default-page-size: 20
+    max-page-size: 100
+    default-sort-direction: DESC
+    default-sort-by: createdAt
+
+  # File Upload Configuration
+  file-upload:
+    max-file-size: 5242880  # 5 MB in bytes
+    max-video-size: 104857600  # 100 MB in bytes
+    max-photos-per-site: 50
+    max-videos-per-site: 10
+    allowed-photo-formats: "jpg,jpeg,png"
+    allowed-video-formats: "mp4,avi"
+
+  # CORS Configuration
+  cors:
+    allowed-origins:
+      - "http://localhost:3000"
+      - "http://localhost:5173"
+      - "https://heritage-platform.com"
+    allowed-methods:
+      - GET
+      - POST
+      - PUT
+      - DELETE
+      - PATCH
+      - OPTIONS
+    allowed-headers:
+      - "*"
+    allow-credentials: true
+    max-age: 3600
+
+# =============================================
+# MinIO Configuration (Object Storage)
+# =============================================
+minio:
+  url: "http://localhost:9000"
+  access-key: "minioadmin"
+  secret-key: "minioadmin"
+  bucket-name: "patrimoine"
+  region: "us-east-1"
+  use-ssl: false  # true in production
+  connection-timeout: 10000
+  socket-timeout: 10000
+
+# =============================================
+# Springdoc OpenAPI (Swagger) Configuration
+# =============================================
+springdoc:
+  swagger-ui:
+    enabled: true
+    path: /swagger-ui.html
+    operations-sorter: method
+    tags-sorter: alpha
+  api-docs:
+    path: /v3/api-docs
+  show-actuator: false
+  default-consumes-media-type: application/json
+  default-produces-media-type: application/json
