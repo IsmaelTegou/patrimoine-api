@@ -9,7 +9,7 @@ services:
     image: postgres:15-alpine
     container_name: patrimoine-postgres
     environment:
-      POSTGRES_USER: patrimoine_user
+      POSTGRES_USER: patrimoineuser
       POSTGRES_PASSWORD: patrimoine_secure_password
       POSTGRES_DB: patrimoine_db
       POSTGRES_INITDB_ARGS: "--encoding=UTF8"
@@ -60,10 +60,10 @@ services:
     container_name: patrimoine-backend
     environment:
       SPRING_PROFILES_ACTIVE: production
-      SPRING_DATASOURCE_URL: jdbc:postgresql://postgresql:5432/patrimoine_db
-      SPRING_DATASOURCE_USERNAME: patrimoine_user
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgresql:5433/patrimoine_db
+      SPRING_DATASOURCE_USERNAME: patrimoineuser
       SPRING_DATASOURCE_PASSWORD: patrimoine_secure_password
-      SPRING_JPA_HIBERNATE_DDL_AUTO: validate
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
       MINIO_URL: http://minio:9000
       MINIO_ACCESS_KEY: minioadmin
       MINIO_SECRET_KEY: minioadmin
@@ -80,7 +80,7 @@ services:
     networks:
       - patrimoine-network
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8080/api/actuator/health"]
+      test: ["CMD", "curl", "-f", "http://localhost:5014/api/actuator/health"]
       interval: 30s
       timeout: 10s
       retries: 3
