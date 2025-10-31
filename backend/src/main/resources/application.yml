@@ -153,8 +153,8 @@ logging:
 app:
   # JWT Configuration
   jwt:
-    secret-key: "your-super-secret-key-change-in-production-at-least-32-chars-long!"
-    expiration-time: 86400000  # 24 hours in milliseconds (24 * 60 * 60 * 1000)
+    secret-key: "A4Q4T4U4VDFREAJ1245AA45Q99KO3I6BCD1256974510AABOQIA"
+    expiration: 86400000  # 24 hours in milliseconds (24 * 60 * 60 * 1000)
     refresh-token-expiration-time: 604800000  # 7 days in milliseconds
     algorithm: RS256  # RSA Signing (asymmetric)
 

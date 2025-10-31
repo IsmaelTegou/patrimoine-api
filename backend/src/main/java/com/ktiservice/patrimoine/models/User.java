@@ -19,7 +19,7 @@ import java.util.regex.Pattern;
 public class User extends BaseEntity {
 
     private String email;
-    private String passwordHash;
+    private String password;
     private String firstName;
     private String lastName;
     private String phoneNumber;
@@ -34,10 +34,10 @@ public class User extends BaseEntity {
     /**
      * Private constructor for creation via factory methods.
      */
-    private User(String email, String passwordHash, String firstName, String lastName) {
+    private User(String email, String password, String firstName, String lastName) {
         super();
         this.email = email;
-        this.passwordHash = passwordHash;
+        this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
         this.role = Role.TOURIST;
