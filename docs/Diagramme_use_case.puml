@@ -1,0 +1,82 @@
+@startuml Diagramme_Cas_d_Utilisation
+!define DIRECTION top to bottom
+skinparam linetype ortho
+skinparam usecase {
+    BackgroundColor #E1F5FE
+    BorderColor #01579B
+    ArrowColor #0277BD
+    ActorBorderColor #01579B
+    ActorBackgroundColor #4FC3F7
+}
+
+title Diagramme de Cas d'Utilisation\nPlateforme Gestion Patrimoine Touristique
+
+(Consulter les sites patrimoniaux) as UC1
+(Consulter les événements touristiques) as UC2
+(Consulter les itinéraires recommandés) as UC3
+(Consulter les avis et évaluations) as UC4
+(S'enregistrer sur la plateforme) as UC5
+(Se connecter) as UC6
+(Créer/modifier un avis) as UC7
+(Consulter historique de visites) as UC8
+(Consulter profils des guides) as UC9
+(Consulter son profil public) as UC10
+(Voir les statistiques du site) as UC11
+(Gérer informations du site) as UC12
+(Télécharger photos/vidéos) as UC13
+(Gérer horaires et tarifs) as UC14
+(Modérer avis et commentaires) as UC15
+(Consulter statistiques détaillées) as UC16
+(Gérer utilisateurs - CRUD) as UC17
+(Valider enregistrements touristes) as UC18
+(Créer/gérer profils guides) as UC19
+(Créer sites patrimoniaux) as UC20
+(Créer itinéraires) as UC21
+(Créer événements touristiques) as UC22
+(Générer rapports) as UC23
+(Exporter PDF/Excel) as UC24
+(Gérer modération globale) as UC25
+
+actor "👤 Visiteur Anonyme" as VisiteurAnonyme
+actor "👨‍💼 Touriste Enregistré" as Touriste
+actor "🗺️ Guide Touristique" as Guide
+actor "⚙️ Gestionnaire de Site" as Gestionnaire
+actor "👑 Administrateur" as Admin
+
+VisiteurAnonyme --> UC1
+VisiteurAnonyme --> UC2
+VisiteurAnonyme --> UC3
+VisiteurAnonyme --> UC4
+
+Touriste --> UC5
+Touriste --> UC6
+Touriste --> UC7
+Touriste --> UC8
+Touriste --> UC9
+Touriste --|> VisiteurAnonyme : hérite
+
+Guide --> UC10
+Guide --> UC11
+Guide --|> VisiteurAnonyme : hérite
+
+Gestionnaire --> UC12
+Gestionnaire --> UC13
+Gestionnaire --> UC14
+Gestionnaire --> UC15
+Gestionnaire --> UC16
+
+Admin --> UC17
+Admin --> UC18
+Admin --> UC19
+Admin --> UC20
+Admin --> UC21
+Admin --> UC22
+Admin --> UC23
+Admin --> UC24
+Admin --> UC25
+
+UC21 ..> UC20 : utilise
+UC23 ..> UC1 : accède
+UC24 ..> UC23 : utilise
+
+@enduml
