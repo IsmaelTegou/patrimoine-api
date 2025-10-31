@@ -1,0 +1,293 @@
+@startuml Diagramme_Classes
+!define ABSTRACT_COLOR #FFCCCC
+!define ENTITY_COLOR #E1F5FE
+!define ENUM_COLOR #FFF9C4
+
+skinparam classBackgroundColor ENTITY_COLOR
+skinparam classBorderColor #01579B
+skinparam classArrowColor #0277BD
+skinparam classStereotypeFontColor #333333
+
+title Diagramme de Classes\nPlateforme Gestion Patrimoine Touristique
+
+enum Role {
+    VISITEUR_ANONYME
+    TOURISTE
+    GUIDE
+    GESTIONNAIRE_SITE
+    ADMINISTRATEUR
+}
+
+enum Langue {
+    FRANCAIS
+    ANGLAIS
+}
+
+enum TypePatrimoine {
+    SITE_NATUREL
+    RESERVE_PARC
+    CHEFFERIE
+    PALAIS
+    SITE_HISTORIQUE
+    MUSEE
+    RITUEL
+    DANSE
+    SAVOIR_FAIRE
+    FETE
+    SITE_ARCHEOLOGIQUE
+}
+
+enum EtatConservation {
+    BON
+    MOYEN
+    DEGRADE
+}
+
+enum TypeMedia {
+    PHOTO
+    VIDEO
+}
+
+enum TypeRapport {
+    FREQUENTATION
+    AVIS_MOYENS
+    ENGAGEMENT_UTILISATEURS
+}
+
+class Utilisateur <<Entity>> {
+    -idUtilisateur: Long
+    -email: String
+    -motDePasse: String
+    -prenom: String
+    -nom: String
+    -telephone: String
+    -dateCreation: DateTime
+    -dateModification: DateTime
+    -actif: Boolean
+    -role: Role
+    -langue: Langue
+    --
+    +creerUtilisateur(): void
+    +authentifier(email, motDePasse): Boolean
+    +changerMotDePasse(ancien, nouveau): void
+    +changerLangue(langue): void
+    +obtenirRole(): Role
+}
+
+class Touriste <<Entity>> {
+    -idTouriste: Long
+    -dateInscription: DateTime
+    -valide: Boolean
+    --
+    +valider(): void
+    +obtenirHistorique(): List<HistoriqueVisite>
+}
+
+class Guide <<Entity>> {
+    -idGuide: Long
+    -specialite: String
+    -experience: Integer
+    -nombreAvisReceived: Integer
+    --
+    +consulterProfil(): void
+    +voirStatistiques(): Map<String, Object>
+}
+
+class GestionnaireSite <<Entity>> {
+    -idGestionnaire: Long
+    -dateAssignation: DateTime
+    --
+    +gererSite(site: SitePatrimonial): void
+    +obtenirSitesGeres(): List<SitePatrimonial>
+}
+
+class Administrateur <<Entity>> {
+    -idAdmin: Long
+    --
+    +gererUtilisateurs(): void
+    +validerEnregistrements(): void
+    +genererRapports(): void
+}
+
+Utilisateur <|-- Touriste
+Utilisateur <|-- Guide
+Utilisateur <|-- GestionnaireSite
+Utilisateur <|-- Administrateur
+
+class SitePatrimonial <<Entity>> {
+    -idSite: Long
+    -nom: String
+    -description: String
+    -type: TypePatrimoine
+    -latitude: Double
+    -longitude: Double
+    -province: String
+    -heure_ouverture: Time
+    -heure_fermeture: Time
+    -tarif_entree: Decimal
+    -capacite_accueil: Integer
+    -etat_conservation: EtatConservation
+    -contact_responsable: String
+    -telephone_contact: String
+    -moyenne_avis: Double
+    -nombre_avis: Integer
+    -nombre_visites: Integer
+    -date_creation: DateTime
+    -date_modification: DateTime
+    --
+    +creerSite(): void
+    +modifierSite(donnees: Map): void
+    +calculerMoyenneAvis(): Double
+    +obtenirMedias(): List<Media>
+    +obtenirAvis(): List<Avis>
+    +obtenirEvenements(): List<EvenementTouristique>
+    +enregistrerVisite(): void
+}
+
+class Media <<Entity>> {
+    -idMedia: Long
+    -type_media: TypeMedia
+    -nom_fichier: String
+    -chemin_minio: String
+    -taille_fichier: Long
+    -date_ajout: DateTime
+    -description: String
+    -url_access: String
+    --
+    +televergerFichier(fichier: File): void
+    +supprimerFichier(): void
+    +obtenirURL(): String
+}
+
+SitePatrimonial "1" --o "*" Media : contient
+
+class Avis <<Entity>> {
+    -idAvis: Long
+    -idSite: Long
+    -idTouriste: Long
+    -note: Integer
+    -commentaire: String
+    -date_creation: DateTime
+    -approuve: Boolean
+    --
+    +creerAvis(site, note, commentaire): void
+    +modererAvis(approuve: Boolean): void
+    +supprimerAvis(): void
+    +obtenirNote(): Integer
+}
+
+SitePatrimonial "1" --o "*" Avis : reçoit
+Touriste "1" --o "*" Avis : donne
+
+class Itineraire <<Entity>> {
+    -idItineraire: Long
+    -titre: String
+    -description: String
+    -duree_estimee: Integer
+    -theme: String
+    -ordre_visite: List<SitePatrimonial>
+    -date_creation: DateTime
+    --
+    +creerItineraire(titre, description): void
+    +ajouterSite(site: SitePatrimonial, ordre: Integer): void
+    +supprimerSite(idSite: Long): void
+    +exporterPDF(): File
+    +exporterExcel(): File
+    +obtenirSites(): List<SitePatrimonial>
+}
+
+Itineraire "*" --o "*" SitePatrimonial : contient
+
+class EvenementTouristique <<Entity>> {
+    -idEvenement: Long
+    -titre: String
+    -description: String
+    -idSite: Long
+    -date_debut: DateTime
+    -date_fin: DateTime
+    -lieu: String
+    -type_evenement: String
+    -capacite: Integer
+    -date_creation: DateTime
+    --
+    +creerEvenement(titre, dateDebut): void
+    +modifierEvenement(donnees: Map): void
+    +supprimerEvenement(): void
+    +verifierDisponibilite(): Boolean
+}
+
+SitePatrimonial "1" --o "*" EvenementTouristique : accueille
+
+class HistoriqueVisite <<Entity>> {
+    -idHistorique: Long
+    -idTouriste: Long
+    -idSite: Long
+    -date_visite: DateTime
+    -duree_visite: Integer
+    -source_acces: String
+    --
+    +enregistrerVisite(touriste: Touriste, site: SitePatrimonial): void
+    +obtenirHistorique(idTouriste: Long): List<HistoriqueVisite>
+    +calculerStatistiques(): Map<String, Object>
+}
+
+Touriste "1" --o "*" HistoriqueVisite : consulte
+SitePatrimonial "1" --o "*" HistoriqueVisite : visite
+
+class Rapport <<Entity>> {
+    -idRapport: Long
+    -type_rapport: TypeRapport
+    -titre: String
+    -date_debut: DateTime
+    -date_fin: DateTime
+    -donnees: JSON
+    -date_generation: DateTime
+    -genere_par: Utilisateur
+    --
+    +genererRapportFrequentation(dateDebut, dateFin): Rapport
+    +genererRapportAvis(idSite: Long): Rapport
+    +genererRapportEngagement(): Rapport
+    +exporterPDF(): File
+    +exporterExcel(): File
+    +obtenirDonnees(): JSON
+}
+
+Administrateur "1" --o "*" Rapport : génère
+
+class RapportFrequentation {
+    -nombreVisitesTotal: Integer
+    -visiteParSite: Map<SitePatrimonial, Integer>
+    -visiteParJour: Map<Date, Integer>
+    --
+    +calculerTotalVisites(): Integer
+    +obtenirSiteLePlusVisite(): SitePatrimonial
+}
+
+class RapportAvis {
+    -moyenneGlobale: Double
+    -moyenneParSite: Map<SitePatrimonial, Double>
+    -nombreAvisTotal: Integer
+    --
+    +calculerMoyenneGlobale(): Double
+    +obtenirSiteLeMieuxNote(): SitePatrimonial
+    +obtenirSiteLePlusCommente(): SitePatrimonial
+}
+
+class RapportEngagement {
+    -nombreUtilisateursActifs: Integer
+    -taux_engagement: Double
+    -nombreAvisCreesTotal: Integer
+    --
+    +calculerTauxEngagement(): Double
+    +obtenirUtilisateurLePlusActif(): Touriste
+    +obtenirDonneesEngagementParPeriode(): Map<Period, Double>
+}
+
+Rapport <|-- RapportFrequentation
+Rapport <|-- RapportAvis
+Rapport <|-- RapportEngagement
+
+GestionnaireSite "*" --o "1" SitePatrimonial : gère
+Guide "1" --o "1" SitePatrimonial : associé
+
+@enduml

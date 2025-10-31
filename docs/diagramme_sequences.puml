@@ -1,0 +1,53 @@
+@startuml Diagramme_Sequence_Avis
+title Diagramme de Séquence - Création et Consultation d'Avis
+
+actor Touriste
+participant Interface as "Interface\nReact"
+participant API as "Serveur API\nSpring Boot"
+participant BD as "Base de Données\nPostgreSQL"
+
+== Consultation du Site ==
+Touriste -> Interface : 1. Consulter détails site
+Interface -> API : 2. GET /api/v1/sites/{idSite}
+API -> API : 3. Vérifier authentification (JWT)
+API -> BD : 4. SELECT * FROM sites WHERE id = ?
+BD --> API : 5. Retour données site
+API --> Interface : 6. 200 OK + données JSON
+Interface --> Touriste : 7. Afficher détails site
+
+== Création d'un Avis ==
+Touriste -> Interface : 8. Remplir formulaire avis\n(note 1-5, commentaire)
+Interface -> Interface : 9. Valider avis côté client
+Touriste -> Interface : 10. Soumettre avis
+Interface -> API : 11. POST /api/v1/avis\n{idSite, note, commentaire}
+API -> API : 12. Vérifier authentification\n13. Valider données
+API -> API : 14. Vérifier autorisation (rôle)
+API -> BD : 15. INSERT INTO avis\n(id_touriste, id_site, note, commentaire, ...)
+BD --> API : 16. Avis créé (ID retourné)
+API -> BD : 17. UPDATE sites\nSET average_rating = ...\nWHERE id = ?
+BD --> API : 18. Rating mis à jour
+API --> Interface : 19. 201 Created + avis créé
+Interface --> Touriste : 20. Message confirmation
+
+== Consultation des Avis ==
+Touriste -> Interface : 21. Afficher tous les avis
+Interface -> API : 22. GET /api/v1/sites/{idSite}/avis
+API -> BD : 23. SELECT * FROM avis\nWHERE id_site = ? AND approuve = true
+BD --> API : 24. Retour liste avis approuvés
+API --> Interface : 25. 200 OK + liste JSON
+Interface --> Touriste : 26. Afficher avis et notes
+
+== Modération par Gestionnaire ==
+Touriste -> Interface : 27. Avis en attente de modération
+Interface -> API : 28. GET /api/v1/avis/en-attente
+API -> BD : 29. SELECT * FROM avis WHERE approuve = false
+BD --> API : 30. Retour avis non approuvés
+API --> Interface : 31. Afficher avis à modérer
+Touriste -> Interface : 32. Approuver/rejeter avis
+Interface -> API : 33. PATCH /api/v1/avis/{idAvis}\n{approuve: true}
+API -> BD : 34. UPDATE avis SET approuve = ?
+BD --> API : 35. OK
+API --> Interface : 36. 200 OK
+Interface --> Touriste : 37. Confirmation modération
+
+@enduml
