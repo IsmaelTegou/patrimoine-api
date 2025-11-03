@@ -22,6 +22,7 @@ public abstract class BaseEntity {
     private LocalDateTime updatedAt;
     private String updatedBy;
 
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
