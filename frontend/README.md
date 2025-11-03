@@ -1,18 +1,46 @@
-# React + Vite
+# Patrimoine API Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Interface d'administration pour la gestion du patrimoine touristique.
 
-Currently, two official plugins are available:
+## Installation
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+```bash
+npm install
+```
 
-## React Compiler
+## Développement
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+Pour lancer le serveur de développement :
 
-Note: This will impact Vite dev & build performances.
+```bash
+npm run dev
+```
 
-## Expanding the ESLint configuration
+## Scripts disponibles
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- `npm run dev` : Lance le serveur de développement
+- `npm run build` : Construit l'application pour la production
+- `npm run preview` : Prévisualise la version de production
+- `npm run lint` : Vérifie le code avec ESLint
+
+## Structure du projet
+
+```
+src/
+  ├── assets/        # Images, vidéos et autres ressources statiques
+  ├── components/    # Composants React réutilisables
+  │   ├── pages/    # Pages de l'application
+  │   ├── Dashboard.jsx
+  │   ├── Login.jsx
+  │   ├── Sidebar.jsx
+  │   └── Signup.jsx
+  ├── App.jsx       # Composant racine
+  └── main.jsx      # Point d'entrée de l'application
+```
+
+## Technologies utilisées
+
+- React
+- Material-UI (MUI)
+- Vite
+- ESLint

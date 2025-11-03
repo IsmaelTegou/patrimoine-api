@@ -1,33 +1,59 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import Login from './components/Login'
+import Signup from './components/Signup'
+import Dashboard from './components/Dashboard'
+import ThemeProvider from './theme/ThemeProvider'
+import './assets/images/logo.jpg'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const [authView, setAuthView] = useState('login') // 'login' | 'signup'
+  const [notification, setNotification] = useState(null)
 
+  const handleLogin = () => {
+    setIsLoggedIn(true)
+  }
+
+  const handleLogout = () => {
+    setIsLoggedIn(false)
+    setAuthView('login') // Assure que l'utilisateur revient toujours à la page de connexion
+  }
+
+  const handleCreateAccount = (success, message) => {
+    setNotification({ type: success ? 'success' : 'error', message })
+    setAuthView('login')
+  }
+
+  const renderAuthContent = () => {
+    if (isLoggedIn) {
+      return <Dashboard onLogout={handleLogout} />;
+    }
+    
+    if (authView === 'login') {
+      return (
+        <Login
+          onLogin={handleLogin}
+          onShowSignup={() => setAuthView('signup')}
+          notification={notification}
+          clearNotification={() => setNotification(null)}
+        />
+      );
+    }
+    
+    return (
+      <Signup 
+        onCreateAccount={handleCreateAccount} 
+        onShowLogin={() => setAuthView('login')} 
+      />
+    );
+  };
+
+  console.log('App rendering...');
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <ThemeProvider>
+        {renderAuthContent()}
+      </ThemeProvider>
     </>
   )
 }
