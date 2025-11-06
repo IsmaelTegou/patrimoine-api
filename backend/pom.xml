@@ -133,13 +133,6 @@
             <version>${springdoc.version}</version>
         </dependency>
 
-        <!-- dotenv -->
-        <dependency>
-            <groupId>me.paulschwarz</groupId>
-            <artifactId>spring-dotenv</artifactId>
-            <version>${dotenv.version}</version>
-        </dependency>
-
         <!-- RabbitMQ / AMQP -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
