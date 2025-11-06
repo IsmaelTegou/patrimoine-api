@@ -1,60 +1,51 @@
-import { useState } from 'react'
-import Login from './components/Login'
-import Signup from './components/Signup'
-import Dashboard from './components/Dashboard'
-import ThemeProvider from './theme/ThemeProvider'
-import './assets/images/logo.jpg'
+import React from 'react'
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
+import { AuthProvider } from './context/AuthContext'
+import ProtectedRoute from './components/ProtectedRoute'
+import SignIn from './pages/SignIn'
+import SignUp from './pages/SignUp'
+import Dashboard from './pages/Dashboard'
+import Layout from './components/Layout'
+import Sites from './pages/Sites'
+import Itineraires from './pages/Itineraires'
+import Guides from './pages/Guides'
+import Evenements from './pages/Evenements'
+import Historique from './pages/Historique'
+import Rapports from './pages/Rapports'
+import Utilisateurs from './pages/Utilisateurs'
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false)
-  const [authView, setAuthView] = useState('login') // 'login' | 'signup'
-  const [notification, setNotification] = useState(null)
-
-  const handleLogin = () => {
-    setIsLoggedIn(true)
-  }
-
-  const handleLogout = () => {
-    setIsLoggedIn(false)
-    setAuthView('login') // Assure que l'utilisateur revient toujours à la page de connexion
-  }
-
-  const handleCreateAccount = (success, message) => {
-    setNotification({ type: success ? 'success' : 'error', message })
-    setAuthView('login')
-  }
-
-  const renderAuthContent = () => {
-    if (isLoggedIn) {
-      return <Dashboard onLogout={handleLogout} />;
-    }
-    
-    if (authView === 'login') {
-      return (
-        <Login
-          onLogin={handleLogin}
-          onShowSignup={() => setAuthView('signup')}
-          notification={notification}
-          clearNotification={() => setNotification(null)}
-        />
-      );
-    }
-    
-    return (
-      <Signup 
-        onCreateAccount={handleCreateAccount} 
-        onShowLogin={() => setAuthView('login')} 
-      />
-    );
-  };
-
-  console.log('App rendering...');
   return (
-    <>
-      <ThemeProvider>
-        {renderAuthContent()}
-      </ThemeProvider>
-    </>
+    <BrowserRouter>
+      <AuthProvider>
+        <Routes>
+          <Route path="/signin" element={<SignIn />} />
+          <Route path="/signup" element={<SignUp />} />
+
+          {/* Protected app routes live under /app - root '/' redirects to sign in */}
+          <Route
+            path="/app"
+            element={
+              <ProtectedRoute>
+                <Layout />
+              </ProtectedRoute>
+            }
+          >
+            <Route index element={<Dashboard />} />
+            <Route path="sites" element={<Sites />} />
+            <Route path="itineraires" element={<Itineraires />} />
+            <Route path="guides" element={<Guides />} />
+            <Route path="evenements" element={<Evenements />} />
+            <Route path="historique" element={<Historique />} />
+            <Route path="rapports" element={<Rapports />} />
+            <Route path="utilisateurs" element={<Utilisateurs />} />
+          </Route>
+
+          <Route path="/" element={<Navigate to="/signin" replace />} />
+          <Route path="*" element={<Navigate to="/signin" replace />} />
+        </Routes>
+      </AuthProvider>
+    </BrowserRouter>
   )
 }
 
