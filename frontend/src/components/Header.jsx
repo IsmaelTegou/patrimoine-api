@@ -69,56 +69,140 @@ const Header = () => {
   return (
     <AppBar
       position="fixed"
-      sx={{
-        width: `calc(100% - 250px)`,
-        ml: '250px',
-        backgroundColor: 'white',
-        color: '#344767',
-        boxShadow: '0 4px 6px -1px rgba(0,0,0,0.1)',
-      }}
+      sx={(theme) => ({
+        width: `calc(100% - var(--sidebar-width, 250px))`,
+        ml: 'var(--sidebar-width, 250px)',
+        boxShadow: 'none',
+        borderBottom: '1px solid',
+        borderColor: theme.palette.mode === 'dark' ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.08)',
+        backdropFilter: 'blur(6px)',
+        backgroundColor: theme.palette.mode === 'dark' 
+          ? 'rgba(22, 28, 36, 0.95)'
+          : 'rgba(255, 255, 255, 0.95)',
+        color: theme.palette.text.primary,
+      })}
     >
-      <Toolbar>
-        <Typography variant="h6" component="div" sx={{ flexGrow: 1, fontWeight: 'bold' }}>
+      <Toolbar sx={{ minHeight: '70px !important' }}>
+        <Typography 
+          variant="h6" 
+          component="div" 
+          sx={(theme) => ({ 
+            flexGrow: 1, 
+            fontWeight: 700,
+            fontSize: '1.25rem',
+            color: theme.palette.primary.main,
+            letterSpacing: '-0.025em'
+          })}
+        >
           {pageTitle}
         </Typography>
         
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
           {/* Search Bar */}
           <Box
-            sx={{
+            sx={(theme) => ({
               display: 'flex',
               alignItems: 'center',
-              backgroundColor: '#F8F9FA',
-              borderRadius: 1,
+              backgroundColor: theme.palette.mode === 'dark' 
+                ? 'rgba(255, 255, 255, 0.05)'
+                : 'rgba(0, 0, 0, 0.04)',
+              borderRadius: '8px',
               px: 2,
-              py: 0.5,
-            }}
+              py: 0.75,
+              transition: 'all 0.2s ease-in-out',
+              '&:hover': {
+                backgroundColor: theme.palette.mode === 'dark'
+                  ? 'rgba(255, 255, 255, 0.08)'
+                  : 'rgba(0, 0, 0, 0.07)',
+                boxShadow: theme.palette.mode === 'dark'
+                  ? '0 2px 4px rgba(0,0,0,0.3)'
+                  : '0 2px 4px rgba(0,0,0,0.05)'
+              }
+            })}
           >
-            <SearchIcon sx={{ color: '#67748E', mr: 1 }} />
+            <SearchIcon sx={(theme) => ({ 
+              color: theme.palette.text.secondary,
+              mr: 1 
+            })} />
             <InputBase
-              placeholder="Search here"
-              sx={{ color: '#67748E' }}
+              placeholder="Rechercher..."
+              sx={(theme) => ({ 
+                color: theme.palette.text.primary,
+                fontSize: '0.875rem',
+                '&::placeholder': {
+                  color: theme.palette.text.secondary,
+                  opacity: 0.7
+                },
+                '& .MuiInputBase-input': {
+                  color: theme.palette.text.primary,
+                }
+              })}
             />
           </Box>
           
           {/* Notifications */}
-          <IconButton sx={{ color: '#344767' }}>
-            <Badge badgeContent={4} color="error">
-              <NotificationsIcon />
+          <IconButton 
+            sx={(theme) => ({ 
+              color: theme.palette.text.primary,
+              backgroundColor: theme.palette.mode === 'dark' 
+                ? 'rgba(255, 255, 255, 0.05)'
+                : 'rgba(0, 0, 0, 0.04)',
+              '&:hover': {
+                backgroundColor: theme.palette.mode === 'dark'
+                  ? 'rgba(255, 255, 255, 0.08)'
+                  : 'rgba(0, 0, 0, 0.07)',
+              },
+              width: 40,
+              height: 40
+            })}
+          >
+            <Badge 
+              badgeContent={4} 
+              color="error"
+              sx={{
+                '& .MuiBadge-badge': {
+                  backgroundColor: '#FF4842',
+                  color: 'white',
+                  fontWeight: 600,
+                  fontSize: '0.75rem'
+                }
+              }}
+            >
+              <NotificationsIcon sx={{ fontSize: 20 }} />
             </Badge>
           </IconButton>
           
           {/* Profile */}
           {/* Theme toggle */}
-          <ThemeToggle />
+          <IconButton
+            sx={{ 
+              color: '#344767',
+              backgroundColor: '#F8F9FA',
+              '&:hover': {
+                backgroundColor: '#F0F2F5'
+              },
+              width: 40,
+              height: 40
+            }}
+          >
+            <ThemeToggle />
+          </IconButton>
 
           {/* Profile Menu */}
           <Box>
             <IconButton 
               onClick={handleProfileClick}
-              sx={{ color: '#344767' }}
+              sx={{ 
+                color: '#344767',
+                backgroundColor: '#F8F9FA',
+                '&:hover': {
+                  backgroundColor: '#F0F2F5'
+                },
+                width: 40,
+                height: 40
+              }}
             >
-              <AccountCircle />
+              <AccountCircle sx={{ fontSize: 20 }} />
             </IconButton>
             <Menu
               anchorEl={anchorEl}
@@ -126,34 +210,73 @@ const Header = () => {
               onClose={handleClose}
               onClick={handleClose}
               PaperProps={{
-                elevation: 3,
-                sx: {
+                elevation: 0,
+                sx: (theme) => ({
                   mt: 1.5,
                   overflow: 'visible',
-                  filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.12))',
-                  '& .MuiAvatar-root': {
-                    width: 32,
-                    height: 32,
-                    ml: -0.5,
-                    mr: 1,
+                  filter: theme.palette.mode === 'dark'
+                    ? 'drop-shadow(0px 4px 12px rgba(0,0,0,0.3))'
+                    : 'drop-shadow(0px 4px 12px rgba(0,0,0,0.1))',
+                  borderRadius: '12px',
+                  minWidth: 200,
+                  bgcolor: theme.palette.background.paper,
+                  border: '1px solid',
+                  borderColor: theme.palette.mode === 'dark'
+                    ? 'rgba(255,255,255,0.1)'
+                    : 'rgba(0,0,0,0.08)',
+                  '&:before': {
+                    content: '""',
+                    display: 'block',
+                    position: 'absolute',
+                    top: 0,
+                    right: 14,
+                    width: 10,
+                    height: 10,
+                    bgcolor: 'inherit',
+                    borderTop: '1px solid',
+                    borderLeft: '1px solid',
+                    borderColor: 'inherit',
+                    transform: 'translateY(-50%) rotate(45deg)',
+                    zIndex: 0,
                   },
-                },
+                }),
               }}
               transformOrigin={{ horizontal: 'right', vertical: 'top' }}
               anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
             >
-              <MenuItem onClick={handleClose}>
+              <MenuItem onClick={handleClose} sx={{ py: 1.5 }}>
                 <ListItemIcon>
-                  <PersonIcon fontSize="small" sx={{ color: '#344767' }} />
+                  <PersonIcon fontSize="small" sx={{ color: '#1A73E8' }} />
                 </ListItemIcon>
-                Profile
+                <Typography 
+                  variant="body2" 
+                  sx={(theme) => ({ 
+                    color: theme.palette.text.primary, 
+                    fontWeight: 500 
+                  })}
+                >
+                  Profile
+                </Typography>
               </MenuItem>
-              <Divider />
-              <MenuItem onClick={handleLogout}>
+              <Divider sx={(theme) => ({ 
+                my: 1,
+                borderColor: theme.palette.mode === 'dark' 
+                  ? 'rgba(255,255,255,0.1)' 
+                  : 'rgba(0,0,0,0.08)'
+              })} />
+              <MenuItem onClick={handleLogout} sx={{ py: 1.5 }}>
                 <ListItemIcon>
-                  <LogoutIcon fontSize="small" sx={{ color: '#344767' }} />
+                  <LogoutIcon fontSize="small" sx={{ color: '#FF4842' }} />
                 </ListItemIcon>
-                Déconnexion
+                <Typography 
+                  variant="body2" 
+                  sx={(theme) => ({ 
+                    color: theme.palette.text.primary, 
+                    fontWeight: 500 
+                  })}
+                >
+                  Déconnexion
+                </Typography>
               </MenuItem>
             </Menu>
           </Box>
@@ -169,10 +292,17 @@ export default Header
 function ThemeToggle() {
   const { mode, toggleMode } = useThemeMode()
   return (
-    <Tooltip title={mode === 'light' ? 'Activer le mode sombre' : 'Désactiver le mode sombre'}>
-      <IconButton onClick={toggleMode} sx={{ color: '#344767' }}>
-        {mode === 'light' ? <Brightness4Icon /> : <Brightness7Icon />}
-      </IconButton>
+    <Tooltip 
+      title={mode === 'light' ? 'Activer le mode sombre' : 'Désactiver le mode sombre'}
+      arrow
+      placement="bottom"
+    >
+      <Box onClick={toggleMode} sx={{ display: 'flex', alignItems: 'center', cursor: 'pointer' }}>
+        {mode === 'light' ? 
+          <Brightness4Icon sx={{ fontSize: 20 }} /> : 
+          <Brightness7Icon sx={{ fontSize: 20 }} />
+        }
+      </Box>
     </Tooltip>
   )
 }
