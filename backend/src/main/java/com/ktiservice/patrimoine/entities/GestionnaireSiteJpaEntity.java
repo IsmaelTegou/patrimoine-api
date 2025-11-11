@@ -2,8 +2,9 @@ package com.ktiservice.patrimoine.entities;
 
 import lombok.*;
 import jakarta.persistence.*;
-import org.hibernate.annotation.*;
-import org.hibernate.annotation.CreationTimeStamp;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.GenericGenerator;
+
 
 import java.util.UUID;
 import java.time.LocalDateTime;
@@ -21,7 +22,7 @@ public class GestionnaireSiteJpaEntity {
     @Column(name="id", columnDefinition="UUID")
     private UUID id;
 
-    @CreationTimeStamp
+   @CreationTimestamp
     @Column(name="dateAssignation", nullable=false, columnDefinition="TIMESTAMP")
     private LocalDateTime dateAssignation;
 }

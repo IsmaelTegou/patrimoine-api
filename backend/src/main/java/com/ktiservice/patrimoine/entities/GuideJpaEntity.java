@@ -2,7 +2,7 @@ package com.ktiservice.patrimoine.entities;
 
 import lombok.*;
 import jakarta.persistence.*;
-import org.hibernate.annotation.*;
+import org.hibernate.annotations.GenericGenerator;
 
 import java.util.UUID;
 

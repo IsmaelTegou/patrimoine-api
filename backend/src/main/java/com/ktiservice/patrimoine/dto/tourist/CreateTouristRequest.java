@@ -1,16 +1,23 @@
 package com.ktiservice.patrimoine.dto.tourist;
 
 import io.swagger.v3.oas.annotations.media.Schema;
-import jarkata.validation.contraints.*;
-import lombock.*;
-import java.time.localTime;
+import jakarta.validation.constraints.*;   
+import lombok.*;                           
+import java.time.LocalTime;                
 
 @Data
-@NoArgConstructor
-@AllArgConstructor
+@NoArgsConstructor
+@AllArgsConstructor
 @Builder
-@Schema(description="Create a Tourist")
-
+@Schema(description = "Create a Tourist")
 public class CreateTouristRequest {
-   
+
+    @NotNull
+    @Schema(description = "Name of the tourist", example = "John Doe")
+    private String name;
+
+    @NotNull
+    @Schema(description = "Time of visit", example = "10:30")
+    private LocalTime visitTime;
 }
+

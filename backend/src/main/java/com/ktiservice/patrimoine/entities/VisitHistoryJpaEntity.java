@@ -5,6 +5,7 @@ import java.util.UUID;
 import jakarta.persistence.*;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.CreationTimestamp;
+import java.time.LocalDateTime;
 
 @Data
 @NoArgsConstructor
@@ -22,17 +23,17 @@ public class VisitHistoryJpaEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="id_history")
-    private Long history;
+    private ReviewJpaEntity history;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="id_tourist")
-    private Long tourist;
+    private TouristJpaEntity tourist;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="id_site")
-    private Long site;
+    private HeritageNetworkJpaEntity site;
 
-    @CreationTimeStamp
+    @CreationTimestamp
     @Column(name="date_visite", nullable=false, columnDefinition="TIMESTAMP")
     private LocalDateTime dateVisite;
     

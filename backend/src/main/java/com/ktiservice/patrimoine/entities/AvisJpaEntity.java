@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import java.util.UUID;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.CreationTimestamp;
+import java.time.LocalDateTime;
 
 @Data
 @NoArgsConstructor
@@ -22,11 +23,11 @@ public class AvisJpaEntity {
 
     @ManyToOne(fetch =FetchType.LAZY)
     @JoinColumn(name="id_site")
-    private Long id_site;
+    private HeritageNetworkJpaEntity site;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="id_tourist")
-    private Long id_tourist;
+    private TouristJpaEntity tourist;
 
     @Column(name="note", nullable=true)
     private Integer note;
@@ -34,7 +35,7 @@ public class AvisJpaEntity {
     @Column(name="comment", nullable=true)
     private String comment;
 
-    @CreationTimeStamp
+    @CreationTimestamp
     @Column(name="date_creation", nullable=false, columnDefinition="TIMESTAMP")
     private LocalDateTime date_creation;
 

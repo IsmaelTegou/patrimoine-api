@@ -9,8 +9,6 @@ import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 @Table(name= "Tourists")
-@Getter
-@Setter
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -31,12 +29,15 @@ public class TouristJpaEntity {
     @Column(name= "date_inscription", nullable=false, columnDefinition="TIMESTAMP")
     private LocalDateTime dateInscription;
 
-    @Column(name="isActive",nullable= false)
-    private boolean isActive;
+    @Column(name="is_active",nullable= false)
+    private boolean active;
 
     
     public boolean isEnabled(){
         return true;
     }
 
+    public boolean isActive() {  
+        return active;
+    }
 }

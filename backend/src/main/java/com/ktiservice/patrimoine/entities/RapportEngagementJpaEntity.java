@@ -2,7 +2,7 @@ package com.ktiservice.patrimoine.entities;
 
 import lombok.*;
 import jakarta.persistence.*;
-import org.hibernate.annotation.*;
+import org.hibernate.annotations.GenericGenerator;
 
 import java.util.UUID;
 
@@ -14,7 +14,7 @@ import java.util.UUID;
 public class RapportEngagementJpaEntity {
     @Id
     @GeneratedValue(generator="UUID")
-    @GenerateGenerator(name="UUID", strategy="org.hibernate.id.UUIDGenerator")
+    @GenericGenerator(name="UUID", strategy="org.hibernate.id.UUIDGenerator")
     @Column(name="id", columnDefinition="UUID")
     private UUID id;
 

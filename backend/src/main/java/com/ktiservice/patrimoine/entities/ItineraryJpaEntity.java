@@ -10,7 +10,6 @@ import org.hibernate.annotations.GenericGenerator;
 
 @NoArgsConstructor
 @Data
-@Builder
 @Getter
 @Setter
 @AllArgsConstructor
@@ -35,7 +34,7 @@ public class ItineraryJpaEntity {
     private Integer time_estimation;
 
     @Column(name="theme", nullable=true)
-    private Sting theme;
+    private String theme;
 
     @CreationTimestamp
     @Column(name="date_creation", nullable=false, columnDefinition="TIMESTAMP")

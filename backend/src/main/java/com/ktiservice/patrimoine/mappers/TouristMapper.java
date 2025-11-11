@@ -2,8 +2,12 @@ package com.ktiservice.patrimoine.mappers;
 
 import com.ktiservice.patrimoine.entities.TouristJpaEntity;
 import com.ktiservice.patrimoine.models.Tourist;
+
 import org.springframework.stereotype.Component;
 
+import lombok.Builder;
+
+@Builder
 @Component
 public class TouristMapper {
 
@@ -21,7 +25,7 @@ public class TouristMapper {
                 .id(model.getId())
                 .userId(model.getUserId())
                 .dateInscription(model.getDateInscription())
-                .isActive(model.isActive())
+                .active(model.isActive())
                 .build();
     }
 }
