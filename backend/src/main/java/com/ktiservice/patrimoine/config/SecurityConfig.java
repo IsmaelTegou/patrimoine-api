@@ -35,19 +35,19 @@ public class SecurityConfig {
                     .cors(cors -> cors.configurationSource(corsConfigurationSource()))
                     .authorizeHttpRequests(r -> r
                             .requestMatchers(
-                                    "/api/V1/auth/**",
+                                    "/api/v1/auth/**",
                                     "/v3/api-docs/**",
                                     "/swagger-resources/**",
                                     "/swagger-ui/**",
                                     "/swagger-ui.html"
                             ).permitAll()
-                            .requestMatchers("/api/V1/**").authenticated()
+                            .requestMatchers("/api/v1/**").authenticated()
                             .anyRequest().denyAll())
                     .sessionManagement(s -> s.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                     .authenticationProvider(authenticationProvider)
                     .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
                     .logout(e -> e
-                            .logoutUrl("/api/V1/auth/logout")
+                            .logoutUrl("/api/v1/auth/logout")
                             .logoutSuccessHandler((req, res, auth) -> SecurityContextHolder.clearContext())
                     );
 

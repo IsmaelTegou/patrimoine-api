@@ -10,7 +10,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/api/V1/health")
+@RequestMapping("/api/v1/health")
 @Tag(name = "Health Check", description = "Vérification du bon démarrage de l'application.")
 public class HealthController {
 
