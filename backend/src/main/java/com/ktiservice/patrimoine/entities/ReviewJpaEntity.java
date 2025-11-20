@@ -26,6 +26,8 @@ import java.util.UUID;
 })
 @Where(clause = "deleted_at IS NULL")
 @Data
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "reviews_type", discriminatorType = DiscriminatorType.STRING)
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder

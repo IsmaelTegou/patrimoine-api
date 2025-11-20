@@ -22,6 +22,7 @@ public abstract class BaseEntity {
     private LocalDateTime updatedAt;
     private String updatedBy;
 
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -44,6 +45,15 @@ public abstract class BaseEntity {
                 ", updatedAt=" + updatedAt +
                 ", updatedBy='" + updatedBy + '\'' +
                 '}';
+    }
+
+    
+    public UUID getId() {
+        return id;
+    }
+
+    public void setId(UUID id) {
+        this.id = id;
     }
 }
 
