@@ -39,7 +39,7 @@ const items = [
   { text: 'Utilisateurs', icon: PeopleIcon, path: '/app/utilisateurs' },
 ]
 
-const Sidebar = () => {
+const Sidebar = ({ onSelect, selected }) => {
   const location = useLocation()
   const navigate = useNavigate()
   const [collapsed, setCollapsed] = useState(() => {
@@ -99,30 +99,34 @@ const Sidebar = () => {
       <List sx={{ mt: 2 }}>
         {items.map(({ text, icon, path }) => {
           const Icon = icon
-          // For Dashboard (/app) check exact path
-          // For other options, check exact or subroutes
-          const selected = path === '/app'
-            ? location.pathname === '/app'
-            : location.pathname === path || location.pathname.startsWith(path + '/')
+          // Pour la navigation locale, utilise la clé
+          const key = path === '/app' ? 'dashboard' : path.replace('/app/', '')
+          const isSelected = selected ? selected === key : (path === '/app' ? location.pathname === '/app' : location.pathname === path || location.pathname.startsWith(path + '/'))
           return (
             <ListItem
               key={text}
               button
-              selected={selected}
-              onClick={() => navigate(path)}
+              selected={isSelected}
+              onClick={() => {
+                if (onSelect) {
+                  onSelect(key)
+                } else {
+                  navigate(path)
+                }
+              }}
               sx={{
                 display: 'flex',
                 alignItems: 'center',
                 gap: 1,
                 '&:hover': { backgroundColor: 'rgba(255,255,255,0.08)' },
-                backgroundColor: selected ? 'rgba(255,215,64,0.06)' : 'transparent',
-                borderLeft: selected ? '4px solid rgba(255,215,64,0.95)' : '4px solid transparent',
-                pl: selected ? (collapsed ? 1 : 2) : (collapsed ? 1 : 1.5),
+                backgroundColor: isSelected ? 'rgba(255,215,64,0.06)' : 'transparent',
+                borderLeft: isSelected ? '4px solid rgba(255,215,64,0.95)' : '4px solid transparent',
+                pl: isSelected ? (collapsed ? 1 : 2) : (collapsed ? 1 : 1.5),
                 transition: 'background-color 150ms ease',
               }}
             >
               <Tooltip title={collapsed ? text : ''} placement="right" arrow disableHoverListener={!collapsed}>
-                <ListItemIcon sx={{ color: selected ? 'rgba(255,215,64,1)' : '#fff', minWidth: 40, justifyContent: 'center' }}>
+                <ListItemIcon sx={{ color: isSelected ? 'rgba(255,215,64,1)' : '#fff', minWidth: 40, justifyContent: 'center' }}>
                   <Icon />
                 </ListItemIcon>
               </Tooltip>

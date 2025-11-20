@@ -39,11 +39,18 @@ export const AuthProvider = ({ children }) => {
   }
 
   const signIn = async ({ email, password }) => {
-    // Check for default credentials first
+    // Check for default admin credentials
+    if (email === 'admin@gmail.com' && password === 'admin') {
+      const adminUser = { id: 0, name: 'Admin', email: 'admin@gmail.com', role: 'admin' };
+      setUser(adminUser);
+      return adminUser;
+    }
+
+    // Check for default user credentials
     if (email === 'aoudou@gmail.com' && password === '123456') {
-      const defaultUser = { id: 1, name: 'Aoudou', email: 'aoudou@gmail.com' }
-      setUser(defaultUser)
-      return defaultUser
+      const defaultUser = { id: 1, name: 'Aoudou', email: 'aoudou@gmail.com', role: 'user' };
+      setUser(defaultUser);
+      return defaultUser;
     }
 
     // Otherwise check localStorage users
@@ -52,7 +59,7 @@ export const AuthProvider = ({ children }) => {
     if (!found) {
       throw new Error("Email ou mot de passe invalide")
     }
-    setUser({ id: found.id, name: found.name, email: found.email })
+    setUser({ id: found.id, name: found.name, email: found.email, role: 'user' })
     return found
   }
 

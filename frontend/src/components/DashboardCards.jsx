@@ -19,208 +19,68 @@ import Assignment from '@mui/icons-material/Assignment'
 import Comment from '@mui/icons-material/Comment'
 import AttachMoney from '@mui/icons-material/AttachMoney'
 
+const cards = [
+  {
+    title: 'Visiteurs',
+    value: 1240,
+    icon: <People sx={{ color: '#1976d2', fontSize: 40 }} />, 
+    trend: 'up',
+    percent: 12,
+    color: '#E3F2FD',
+  },
+  {
+    title: 'Réservations',
+    value: 320,
+    icon: <ShoppingCart sx={{ color: '#388e3c', fontSize: 40 }} />, 
+    trend: 'down',
+    percent: 5,
+    color: '#E8F5E9',
+  },
+  {
+    title: 'Commentaires',
+    value: 87,
+    icon: <Comment sx={{ color: '#fbc02d', fontSize: 40 }} />, 
+    trend: 'up',
+    percent: 8,
+    color: '#FFFDE7',
+  },
+  {
+    title: 'Revenus',
+    value: '2 500 €',
+    icon: <AttachMoney sx={{ color: '#d32f2f', fontSize: 40 }} />, 
+    trend: 'up',
+    percent: 15,
+    color: '#FFEBEE',
+  },
+]
+
 const DashboardCards = () => {
   return (
-    <Box sx={{ flexGrow: 1, p: 1, mt: 0 }}>
+    <Box sx={{ flexGrow: 1, p: 2, mt: 8 }}>
       <Grid container spacing={3}>
-        
-        {/* Website Views */}
-        <Grid item xs={12} md={6} lg={4}>
-          <Card sx={{ borderRadius: 2, boxShadow: '0 4px 6px -1px rgba(0,0,0,0.1)' }}>
-            <CardContent>
-              <Typography variant="h6" gutterBottom sx={{ fontWeight: 'bold', color: '#344767' }}>
-                Website Views
-              </Typography>
-              <Typography variant="body2" color="text.secondary" gutterBottom>
-                Last Campaign Performance
-              </Typography>
-              <Box sx={{ mt: 2, p: 2, backgroundColor: '#F8F9FA', borderRadius: 1 }}>
-                <Typography variant="body2" color="text.secondary">
-                  Campaign sent 2 days ago
-                </Typography>
-              </Box>
-            </CardContent>
-          </Card>
-        </Grid>
-
-        {/* Projects */}
-        <Grid item xs={12} md={6} lg={4}>
-          <Card sx={{ borderRadius: 2, boxShadow: '0 4px 6px -1px rgba(0,0,0,0.1)' }}>
-            <CardContent>
-              <Typography variant="h6" gutterBottom sx={{ fontWeight: 'bold', color: '#344767' }}>
-                Projects
-              </Typography>
-              <Box sx={{ display: 'flex', alignItems: 'center', mt: 2 }}>
-                <Chip label="30 done" color="success" variant="filled" />
-                <Typography variant="body2" color="text.secondary" sx={{ ml: 1 }}>
-                  this month
-                </Typography>
-              </Box>
-            </CardContent>
-          </Card>
-        </Grid>
-
-        {/* Comments */}
-        <Grid item xs={12} md={6} lg={4}>
-          <Card sx={{ borderRadius: 2, boxShadow: '0 4px 6px -1px rgba(0,0,0,0.1)' }}>
-            <CardContent>
-              <Typography variant="h6" gutterBottom sx={{ fontWeight: 'bold', color: '#344767' }}>
-                Comments
-              </Typography>
-              <List dense>
-                <ListItem>
-                  <TrendingUp sx={{ color: '#4CAF50', mr: 1 }} />
-                  <ListItemText primary="+55% than last week" />
-                </ListItem>
-                <ListItem>
-                  <TrendingUp sx={{ color: '#4CAF50', mr: 1 }} />
-                  <ListItemText primary="+3% than last month" />
-                </ListItem>
-              </List>
-            </CardContent>
-          </Card>
-        </Grid>
-
-        {/* Today's Users */}
-        <Grid item xs={12} md={6} lg={3}>
-          <Card sx={{ borderRadius: 2, boxShadow: '0 4px 6px -1px rgba(0,0,0,0.1)' }}>
-            <CardContent>
-              <Typography variant="h6" gutterBottom sx={{ fontWeight: 'bold', color: '#344767' }}>
-                Today's Users
-              </Typography>
-              <Typography variant="h4" sx={{ fontWeight: 'bold', color: '#1A73E8' }}>
-                2,300
-              </Typography>
-              <Box sx={{ display: 'flex', alignItems: 'center', mt: 1 }}>
-                <TrendingUp sx={{ color: '#4CAF50', fontSize: 16, mr: 0.5 }} />
-                <Typography variant="body2" color="text.secondary">
-                  +1% than yesterday
-                </Typography>
-              </Box>
-            </CardContent>
-          </Card>
-        </Grid>
-
-        {/* App Timeline */}
-        <Grid item xs={12} md={6} lg={3}>
-          <Card sx={{ borderRadius: 2, boxShadow: '0 4px 6px -1px rgba(0,0,0,0.1)' }}>
-            <CardContent>
-              <Typography variant="h6" gutterBottom sx={{ fontWeight: 'bold', color: '#344767' }}>
-                App
-              </Typography>
-              <List dense>
-                {['May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'].map((month) => (
-                  <ListItem key={month} sx={{ py: 0.5 }}>
-                    <ListItemText primary={month} />
-                  </ListItem>
-                ))}
-              </List>
-            </CardContent>
-          </Card>
-        </Grid>
-
-        {/* Daily Sales */}
-        <Grid item xs={12} md={6} lg={3}>
-          <Card sx={{ borderRadius: 2, boxShadow: '0 4px 6px -1px rgba(0,0,0,0.1)' }}>
-            <CardContent>
-              <Typography variant="h6" gutterBottom sx={{ fontWeight: 'bold', color: '#344767' }}>
-                Daily Sales
-              </Typography>
-              <Typography variant="body2" color="text.secondary">
-                (+15%) increase in today sales.
-              </Typography>
-              <Box sx={{ mt: 2 }}>
-                <LinearProgress variant="determinate" value={75} sx={{ height: 8, borderRadius: 4 }} />
-              </Box>
-              <Typography variant="caption" color="text.secondary" sx={{ mt: 1, display: 'block' }}>
-                updated 4 min ago
-              </Typography>
-            </CardContent>
-          </Card>
-        </Grid>
-
-        {/* Revenue */}
-        <Grid item xs={12} md={6} lg={3}>
-          <Card sx={{ borderRadius: 2, boxShadow: '0 4px 6px -1px rgba(0,0,0,0.1)' }}>
-            <CardContent>
-              <Typography variant="h6" gutterBottom sx={{ fontWeight: 'bold', color: '#344767' }}>
-                Revenue
-              </Typography>
-              <Typography variant="h4" sx={{ fontWeight: 'bold', color: '#1A73E8' }}>
-                34k
-              </Typography>
-              <Typography variant="caption" color="text.secondary">
-                Just updated
-              </Typography>
-            </CardContent>
-          </Card>
-        </Grid>
-
-        {/* Followers */}
-        <Grid item xs={12} md={6} lg={3}>
-          <Card sx={{ borderRadius: 2, boxShadow: '0 4px 6px -1px rgba(0,0,0,0.1)' }}>
-            <CardContent>
-              <Typography variant="h6" gutterBottom sx={{ fontWeight: 'bold', color: '#344767' }}>
-                Followers
-              </Typography>
-              <Typography variant="h4" sx={{ fontWeight: 'bold', color: '#1A73E8' }}>
-                +91
-              </Typography>
-            </CardContent>
-          </Card>
-        </Grid>
-
-        {/* Completed Tasks */}
-        <Grid item xs={12} md={6} lg={3}>
-          <Card sx={{ borderRadius: 2, boxShadow: '0 4px 6px -1px rgba(0,0,0,0.1)' }}>
-            <CardContent>
-              <Typography variant="h6" gutterBottom sx={{ fontWeight: 'bold', color: '#344767' }}>
-                Completed Tasks
-              </Typography>
-              <Typography variant="body2" color="text.secondary" gutterBottom>
-                Last Campaign Performance
-              </Typography>
-              <Typography variant="caption" color="text.secondary">
-                just updated
-              </Typography>
-            </CardContent>
-          </Card>
-        </Grid>
-
-        {/* Orders Overview */}
-        <Grid item xs={12} md={6} lg={3}>
-          <Card sx={{ borderRadius: 2, boxShadow: '0 4px 6px -1px rgba(0,0,0,0.1)' }}>
-            <CardContent>
-              <Typography variant="h6" gutterBottom sx={{ fontWeight: 'bold', color: '#344767' }}>
-                Orders overview
-              </Typography>
-              <Box sx={{ display: 'flex', alignItems: 'center', mt: 1 }}>
-                <TrendingUp sx={{ color: '#4CAF50', mr: 1 }} />
-                <Typography variant="body1" sx={{ fontWeight: 'bold', color: '#4CAF50' }}>
-                  +24%
-                </Typography>
-                <Typography variant="body2" color="text.secondary" sx={{ ml: 1 }}>
-                  this month
-                </Typography>
-              </Box>
-            </CardContent>
-          </Card>
-        </Grid>
-
-        {/* Design Changes */}
-        <Grid item xs={12} md={6} lg={3}>
-          <Card sx={{ borderRadius: 2, boxShadow: '0 4px 6px -1px rgba(0,0,0,0.1)' }}>
-            <CardContent>
-              <Typography variant="h6" gutterBottom sx={{ fontWeight: 'bold', color: '#344767' }}>
-                $2400, Design changes
-              </Typography>
-              <Typography variant="body2" color="text.secondary">
-                22 DEC 7:20 PM
-              </Typography>
-            </CardContent>
-          </Card>
-        </Grid>
-
+        {cards.map((card, idx) => (
+          <Grid item xs={12} sm={6} md={3} key={card.title}>
+            <Card sx={{ background: card.color, borderRadius: 4, boxShadow: 3 }}>
+              <CardContent>
+                <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
+                  {card.icon}
+                  <Box sx={{ ml: 2 }}>
+                    <Typography variant="h6" sx={{ fontWeight: 700 }}>{card.title}</Typography>
+                    <Typography variant="h4" sx={{ fontWeight: 800, color: '#222' }}>{card.value}</Typography>
+                  </Box>
+                </Box>
+                <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                  <Chip
+                    icon={card.trend === 'up' ? <TrendingUp sx={{ color: '#388e3c' }} /> : <TrendingDown sx={{ color: '#d32f2f' }} />}
+                    label={card.trend === 'up' ? `+${card.percent}%` : `-${card.percent}%`}
+                    sx={{ bgcolor: card.trend === 'up' ? '#C8E6C9' : '#FFCDD2', color: card.trend === 'up' ? '#388e3c' : '#d32f2f', fontWeight: 700 }}
+                  />
+                  <LinearProgress variant="determinate" value={card.percent * 5} sx={{ width: 100, height: 8, borderRadius: 5, bgcolor: '#eee' }} />
+                </Box>
+              </CardContent>
+            </Card>
+          </Grid>
+        ))}
       </Grid>
     </Box>
   )
