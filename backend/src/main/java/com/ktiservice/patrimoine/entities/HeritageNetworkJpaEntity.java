@@ -113,10 +113,14 @@ public class HeritageNetworkJpaEntity {
         }
     }
 
+    public HeritageNetworkJpaEntity(UUID id) {
+        this.id = id;
+    }
+
     /**
      * Convert JPA entity to domain entity.
      */
-    public HeritageNetwork toDomainEntity() {
+     public HeritageNetwork toDomainEntity() {
         var domain = new HeritageNetwork();
         domain.setId(this.id);
         domain.setSiteName(this.siteName);

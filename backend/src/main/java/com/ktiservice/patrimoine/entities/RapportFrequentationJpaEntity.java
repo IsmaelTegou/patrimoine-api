@@ -2,6 +2,7 @@ package com.ktiservice.patrimoine.entities;
 
 import lombok.*;
 import jakarta.persistence.*;
+import lombok.experimental.SuperBuilder;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Type;
 
@@ -12,7 +13,7 @@ import java.util.Map;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-
+@SuperBuilder
 @EqualsAndHashCode(callSuper = true)
 
 public class RapportFrequentationJpaEntity extends ReviewJpaEntity {

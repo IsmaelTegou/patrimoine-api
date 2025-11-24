@@ -40,4 +40,10 @@ public class TouristJpaEntity {
     public boolean isActive() {  
         return active;
     }
+
+    public TouristJpaEntity(UUID id) {
+        this.id = id;
+    }
 }
+
+

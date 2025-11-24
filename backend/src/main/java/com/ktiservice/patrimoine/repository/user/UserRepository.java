@@ -2,6 +2,7 @@ package com.ktiservice.patrimoine.repository.user;
 
 import com.ktiservice.patrimoine.models.User;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -25,6 +26,11 @@ public interface UserRepository {
      * Find user by email.
      */
     Optional<User> findByEmail(String email);
+
+    /*
+    Fine All User
+    * */
+    List<User> findAll();
 
     /**
      * Update user.
