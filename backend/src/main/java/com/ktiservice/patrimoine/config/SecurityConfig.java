@@ -39,10 +39,11 @@ public class SecurityConfig {
                                     "/v3/api-docs/**",
                                     "/swagger-resources/**",
                                     "/swagger-ui/**",
-                                    "/swagger-ui.html"
+                                    "/swagger-ui.html",
+                                    "/api/V1/users" // <-- autoriser la création d'utilisateur
                             ).permitAll()
                             .requestMatchers("/api/V1/**").authenticated()
-                            .anyRequest().denyAll())
+                            .anyRequest().permitAll())
                     .sessionManagement(s -> s.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                     .authenticationProvider(authenticationProvider)
                     .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
@@ -67,4 +68,6 @@ public class SecurityConfig {
         source.registerCorsConfiguration("/**", configuration);
         return source;
     }
+
+
 }

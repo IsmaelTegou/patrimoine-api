@@ -3,9 +3,7 @@ package com.ktiservice.patrimoine.models;
 import com.ktiservice.patrimoine.enums.Language;
 import com.ktiservice.patrimoine.enums.Role;
 import com.ktiservice.patrimoine.exceptions.ValidationException;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.regex.Pattern;
 
@@ -13,7 +11,9 @@ import java.util.regex.Pattern;
  * User domain entity.
  * Represents a user in the heritage management system.
  */
-@Data
+
+@Getter
+@Setter 
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
 public class User extends BaseEntity {
@@ -136,6 +136,14 @@ public class User extends BaseEntity {
      */
     public boolean hasRole(Role role) {
         return this.role == role;
+    }
+
+    public void setPasswordHash(String passwordHash) {
+        this.password = passwordHash;
+    }
+
+    public String getPasswordHash() {
+        return this.password;
     }
 }
 

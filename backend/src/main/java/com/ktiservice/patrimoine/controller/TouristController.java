@@ -1,4 +1,4 @@
-package com.ktiservice.patrimoine.controllers;
+package com.ktiservice.patrimoine.controller;
 
 import com.ktiservice.patrimoine.services.TouristService;
 import com.ktiservice.patrimoine.models.Tourist;

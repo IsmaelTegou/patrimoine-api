@@ -46,7 +46,7 @@ public class ReviewApplicationService {
     /**
      * Create a new review.
      */
-    @Transactional
+     @Transactional
     public ReviewResponse createReview(CreateReviewRequest request, UUID userId, String userEmail) {
         log.info("Creating review for site: {} by user: {}", request.getSiteId(), userId);
 
@@ -84,7 +84,7 @@ public class ReviewApplicationService {
     /**
      * Get pending reviews for moderation.
      */
-    @Transactional(readOnly = true)
+     @Transactional(readOnly = true)
     public Page<ReviewResponse> getPendingReviews(Pageable pageable) {
         log.debug("Fetching pending reviews");
         return reviewRepository.findPendingReviews(pageable)
@@ -94,7 +94,7 @@ public class ReviewApplicationService {
     /**
      * Approve a review.
      */
-    @Transactional
+     @Transactional
     public ReviewResponse approveReview(UUID reviewId, UUID approvedBy, String approvedByEmail) {
         log.info("Approving review: {}", reviewId);
 

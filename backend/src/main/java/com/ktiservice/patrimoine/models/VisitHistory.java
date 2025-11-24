@@ -3,7 +3,7 @@ package com.ktiservice.patrimoine.models;
 import com.ktiservice.patrimoine.exceptions.ValidationException;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.Builder;
 
 import java.util.UUID;
 
@@ -12,7 +12,7 @@ import java.util.UUID;
  * Tracks when users visit heritage sites.
  */
 @Data
-@NoArgsConstructor
+@Builder
 @EqualsAndHashCode(callSuper = true)
 public class VisitHistory extends BaseEntity {
 
@@ -21,27 +21,26 @@ public class VisitHistory extends BaseEntity {
     private Integer visitDuration;
     private String accessSource;
 
-    /**
-     * Factory method to create new VisitHistory.
-     */
-    public static VisitHistory create(UUID userId, UUID siteId) {
+    // Constructeur à 4 arguments pour MapStruct et usage direct
+    public VisitHistory(UUID userId, UUID siteId, Integer visitDuration, String accessSource) {
         if (userId == null) {
             throw new ValidationException("User ID is required");
         }
         if (siteId == null) {
             throw new ValidationException("Site ID is required");
         }
-
-        VisitHistory history = new VisitHistory();
-        history.userId = userId;
-        history.siteId = siteId;
-        history.accessSource = "WEB";
-        return history;
+        this.userId = userId;
+        this.siteId = siteId;
+        this.visitDuration = visitDuration;
+        this.accessSource = accessSource != null ? accessSource : "WEB";
     }
 
-    /**
-     * Set visit duration in minutes.
-     */
+    // Factory pour créer un VisitHistory avec valeurs par défaut
+    public static VisitHistory create(UUID userId, UUID siteId) {
+        return new VisitHistory(userId, siteId, null, "WEB");
+    }
+
+    // Setter sécurisé pour la durée de visite
     public void setVisitDuration(Integer minutes) {
         if (minutes != null && minutes > 0) {
             this.visitDuration = minutes;

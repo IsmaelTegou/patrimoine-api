@@ -9,6 +9,7 @@ public class Tourist extends BaseEntity{
     private LocalDateTime dateInscription;
     private boolean active;
     
+    public Tourist(){}
     
      public Tourist(UUID id, UUID userId, LocalDateTime dateInscription, boolean active) {
         super();

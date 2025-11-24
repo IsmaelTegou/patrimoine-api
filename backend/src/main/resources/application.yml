@@ -6,6 +6,8 @@
 spring:
   application:
     name: patrimoine
+  config:
+    import: optional:file:.env[.properties]
 
   # =============================================
   # JPA & Hibernate Configuration

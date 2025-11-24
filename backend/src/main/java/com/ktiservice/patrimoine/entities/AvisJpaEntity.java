@@ -1,4 +1,4 @@
-package com.ktiservice.patrimoine.entities;
+/*package com.ktiservice.patrimoine.entities;
 
 import lombok.*;
 import jakarta.persistence.*;
@@ -42,4 +42,7 @@ public class AvisJpaEntity {
     @Column(name="approuve", nullable=true)
     private Boolean approuve;
 
+   
+
 }
+*/
