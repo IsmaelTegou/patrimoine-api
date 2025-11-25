@@ -1,0 +1,97 @@
+# =============================================
+# FILE: docker-compose.yml (Production)
+# =============================================
+version: '3.9'
+
+services:
+  # PostgreSQL Database
+  postgresql:
+    image: postgres:15-alpine
+    container_name: patrimoine-postgres
+    environment:
+      POSTGRES_USER: patrimoine_user
+      POSTGRES_PASSWORD: patrimoine_secure_password
+      POSTGRES_DB: patrimoine_db
+      POSTGRES_INITDB_ARGS: "--encoding=UTF8"
+    ports:
+      - "5436:5436"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./scripts/init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - patrimoine-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U patrimoine_user -d patrimoine_db"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+
+  # MinIO Object Storage
+  minio:
+    image: minio/minio:latest
+    container_name: patrimoine-minio
+    environment:
+      MINIO_ROOT_USER: minioadmin
+      MINIO_ROOT_PASSWORD: minioadmin
+      MINIO_DEFAULT_BUCKETS: patrimoine
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    volumes:
+      - minio_data:/minio_data
+    networks:
+      - patrimoine-network
+    command: minio server /minio_data --console-address ":9001"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9000/minio/health/live"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+
+  # Spring Boot Application
+  patrimoine-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: patrimoine-backend
+    environment:
+      SPRING_PROFILES_ACTIVE: production
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgresql:5432/patrimoine_db
+      SPRING_DATASOURCE_USERNAME: patrimoine_user
+      SPRING_DATASOURCE_PASSWORD: patrimoine_secure_password
+      SPRING_JPA_HIBERNATE_DDL_AUTO: validate
+      MINIO_URL: http://minio:9000
+      MINIO_ACCESS_KEY: minioadmin
+      MINIO_SECRET_KEY: minioadmin
+      MINIO_BUCKET_NAME: patrimoine
+      APP_JWT_SECRET_KEY: your-super-secret-key-change-in-production-at-least-32-chars-long!
+      APP_ENCRYPTION_SECRET_KEY: your-encryption-secret-key-min-32-chars-long-change-in-prod!
+    ports:
+      - "8080:8080"
+    depends_on:
+      postgresql:
+        condition: service_healthy
+      minio:
+        condition: service_healthy
+    networks:
+      - patrimoine-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/api/actuator/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    restart: unless-stopped
+
+networks:
+  patrimoine-network:
+    driver: bridge
+    name: patrimoine-network
+
+volumes:
+  postgres_data:
+    driver: local
+  minio_data:
+    driver: local
