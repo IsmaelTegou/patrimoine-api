@@ -1,0 +1,231 @@
+2025-11-19 06:05:34 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Waiting for workers to finish.
+2025-11-19 06:05:34 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Successfully waited for workers to finish.
+2025-11-19 06:05:34 [SpringApplicationShutdownHook] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-11-19 06:05:35 [tomcat-shutdown] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-11-19 06:05:35 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-11-19 06:05:36 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2025-11-19 06:05:36 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2025-11-19 06:06:10 [main] INFO  c.k.patrimoine.PatrimoineApplication - Starting PatrimoineApplication using Java 17.0.17 with PID 25988 (C:\Users\ismaelTegou\Desktop\works_of_the_school\SEC_APP\patrimoine\target\classes started by Ismael Tegou in C:\Users\ismaelTegou\Desktop\works_of_the_school\SEC_APP\patrimoine)
+2025-11-19 06:06:10 [main] DEBUG c.k.patrimoine.PatrimoineApplication - Running with Spring Boot v3.5.7, Spring v6.2.12
+2025-11-19 06:06:10 [main] INFO  c.k.patrimoine.PatrimoineApplication - No active profile set, falling back to 1 default profile: "default"
+2025-11-19 06:06:12 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-11-19 06:06:12 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 123 ms. Found 6 JPA repository interfaces.
+2025-11-19 06:06:14 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 5014 (http)
+2025-11-19 06:06:14 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-11-19 06:06:14 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.48]
+2025-11-19 06:06:14 [main] INFO  o.a.c.c.C.[.[localhost].[/api] - Initializing Spring embedded WebApplicationContext
+2025-11-19 06:06:14 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 3627 ms
+2025-11-19 06:06:14 [main] DEBUG c.k.p.i.w.s.JwtAuthenticationFilter - Filter 'jwtAuthenticationFilter' configured for use
+2025-11-19 06:06:15 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-11-19 06:06:15 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@4e14d520
+2025-11-19 06:06:15 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-11-19 06:06:15 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-11-19 06:06:16 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-11-19 06:06:18 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-11-19 06:06:18 [main] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-11-19 06:06:21 [main] INFO  c.k.p.i.config.MinIOConfig - MinIO client initialized successfully: http://localhost:9000
+2025-11-19 06:06:22 [main] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 4 endpoints beneath base path '/actuator'
+2025-11-19 06:06:22 [main] DEBUG o.s.s.c.a.a.c.AuthenticationConfiguration$DefaultPasswordEncoderAuthenticationManagerBuilder - No authenticationProviders and no parentAuthenticationManager defined. Returning null.
+2025-11-19 06:06:22 [main] DEBUG o.s.s.web.DefaultSecurityFilterChain - Will secure any request with filters: DisableEncodeUrlFilter, WebAsyncManagerIntegrationFilter, SecurityContextHolderFilter, HeaderWriterFilter, CorsFilter, CorsFilter, LogoutFilter, JwtAuthenticationFilter, RequestCacheAwareFilter, SecurityContextHolderAwareRequestFilter, AnonymousAuthenticationFilter, SessionManagementFilter, ExceptionTranslationFilter, AuthorizationFilter
+2025-11-19 06:06:23 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 5014 (http) with context path '/api'
+2025-11-19 06:06:23 [main] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5673]
+2025-11-19 06:06:23 [main] INFO  o.s.a.r.c.CachingConnectionFactory - Created new connection: rabbitConnectionFactory#5be0e16f:0/SimpleConnection@10005a46 [delegate=amqp://guest@127.0.0.1:5673/, localPort=51308]
+2025-11-19 06:06:24 [main] INFO  c.k.patrimoine.PatrimoineApplication - Started PatrimoineApplication in 14.448 seconds (process running for 15.157)
+2025-11-19 06:06:24 [main] WARN  o.s.c.events.SpringDocAppInitializer - SpringDoc /v3/api-docs endpoint is enabled by default. To disable it in production, set the property 'springdoc.api-docs.enabled=false'
+2025-11-19 06:06:24 [main] WARN  o.s.c.events.SpringDocAppInitializer - SpringDoc /swagger-ui.html endpoint is enabled by default. To disable it in production, set the property 'springdoc.swagger-ui.enabled=false'
+2025-11-19 06:06:44 [http-nio-5014-exec-1] INFO  o.a.c.c.C.[.[localhost].[/api] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-11-19 06:06:44 [http-nio-5014-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-11-19 06:06:44 [http-nio-5014-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 11 ms
+2025-11-19 06:06:44 [http-nio-5014-exec-1] DEBUG o.s.security.web.FilterChainProxy - Securing POST /api/v1/auth/login
+2025-11-19 06:06:44 [http-nio-5014-exec-1] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-11-19 06:06:44 [http-nio-5014-exec-1] DEBUG o.s.security.web.FilterChainProxy - Secured POST /api/v1/auth/login
+2025-11-19 06:06:44 [http-nio-5014-exec-1] INFO  c.k.p.i.w.controllers.AuthController - Login attempt for email: admin@gmail.com
+2025-11-19 06:06:44 [http-nio-5014-exec-1] INFO  c.k.p.a.s.AuthenticationApplicationService - Authenticating user: admin@gmail.com
+2025-11-19 06:06:44 [http-nio-5014-exec-1] INFO  c.k.p.a.s.AuthenticationApplicationService - User authenticated successfully: admin@gmail.com
+2025-11-19 06:07:21 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Waiting for workers to finish.
+2025-11-19 06:07:22 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Successfully waited for workers to finish.
+2025-11-19 06:07:22 [SpringApplicationShutdownHook] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-11-19 06:07:25 [tomcat-shutdown] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-11-19 06:07:25 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-11-19 06:07:25 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2025-11-19 06:07:25 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2025-11-19 06:08:07 [main] INFO  c.k.p.PatrimoineApplicationTests - Starting PatrimoineApplicationTests using Java 17.0.17 with PID 26492 (started by Ismael Tegou in C:\Users\ismaelTegou\Desktop\works_of_the_school\SEC_APP\patrimoine)
+2025-11-19 06:08:07 [main] DEBUG c.k.p.PatrimoineApplicationTests - Running with Spring Boot v3.5.7, Spring v6.2.12
+2025-11-19 06:08:07 [main] INFO  c.k.p.PatrimoineApplicationTests - No active profile set, falling back to 1 default profile: "default"
+2025-11-19 06:08:13 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-11-19 06:08:13 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 371 ms. Found 6 JPA repository interfaces.
+2025-11-19 06:08:17 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-11-19 06:08:18 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@16cb6f51
+2025-11-19 06:08:18 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-11-19 06:08:18 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-11-19 06:08:19 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-11-19 06:08:23 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-11-19 06:08:24 [main] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-11-19 06:08:31 [main] INFO  c.k.p.i.config.MinIOConfig - MinIO client initialized successfully: http://localhost:9000
+2025-11-19 06:08:33 [main] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 4 endpoints beneath base path '/actuator'
+2025-11-19 06:08:33 [main] DEBUG o.s.s.c.a.a.c.AuthenticationConfiguration$DefaultPasswordEncoderAuthenticationManagerBuilder - No authenticationProviders and no parentAuthenticationManager defined. Returning null.
+2025-11-19 06:08:34 [main] DEBUG o.s.s.web.DefaultSecurityFilterChain - Will secure any request with filters: DisableEncodeUrlFilter, WebAsyncManagerIntegrationFilter, SecurityContextHolderFilter, HeaderWriterFilter, CorsFilter, CorsFilter, LogoutFilter, JwtAuthenticationFilter, RequestCacheAwareFilter, SecurityContextHolderAwareRequestFilter, AnonymousAuthenticationFilter, SessionManagementFilter, ExceptionTranslationFilter, AuthorizationFilter
+2025-11-19 06:08:37 [main] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5673]
+2025-11-19 06:08:37 [main] INFO  o.s.a.r.c.CachingConnectionFactory - Created new connection: rabbitConnectionFactory#54bb1786:0/SimpleConnection@43ac6084 [delegate=amqp://guest@127.0.0.1:5673/, localPort=64995]
+2025-11-19 06:08:37 [main] INFO  c.k.p.PatrimoineApplicationTests - Started PatrimoineApplicationTests in 31.659 seconds (process running for 35.183)
+2025-11-19 06:08:38 [main] WARN  o.s.c.events.SpringDocAppInitializer - SpringDoc /v3/api-docs endpoint is enabled by default. To disable it in production, set the property 'springdoc.api-docs.enabled=false'
+2025-11-19 06:08:38 [main] WARN  o.s.c.events.SpringDocAppInitializer - SpringDoc /swagger-ui.html endpoint is enabled by default. To disable it in production, set the property 'springdoc.swagger-ui.enabled=false'
+2025-11-19 06:08:39 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Waiting for workers to finish.
+2025-11-19 06:08:39 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Successfully waited for workers to finish.
+2025-11-19 06:08:39 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-11-19 06:08:39 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2025-11-19 06:08:39 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2025-11-19 06:08:59 [main] INFO  c.k.patrimoine.PatrimoineApplication - Starting PatrimoineApplication using Java 17.0.17 with PID 13824 (C:\Users\ismaelTegou\Desktop\works_of_the_school\SEC_APP\patrimoine\target\classes started by Ismael Tegou in C:\Users\ismaelTegou\Desktop\works_of_the_school\SEC_APP\patrimoine)
+2025-11-19 06:08:59 [main] DEBUG c.k.patrimoine.PatrimoineApplication - Running with Spring Boot v3.5.7, Spring v6.2.12
+2025-11-19 06:08:59 [main] INFO  c.k.patrimoine.PatrimoineApplication - No active profile set, falling back to 1 default profile: "default"
+2025-11-19 06:09:01 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-11-19 06:09:01 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 114 ms. Found 6 JPA repository interfaces.
+2025-11-19 06:09:02 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 5014 (http)
+2025-11-19 06:09:02 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-11-19 06:09:02 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.48]
+2025-11-19 06:09:03 [main] INFO  o.a.c.c.C.[.[localhost].[/api] - Initializing Spring embedded WebApplicationContext
+2025-11-19 06:09:03 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 3595 ms
+2025-11-19 06:09:03 [main] DEBUG c.k.p.i.w.s.JwtAuthenticationFilter - Filter 'jwtAuthenticationFilter' configured for use
+2025-11-19 06:09:03 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-11-19 06:09:04 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@683ed81b
+2025-11-19 06:09:04 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-11-19 06:09:04 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-11-19 06:09:04 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-11-19 06:09:06 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-11-19 06:09:06 [main] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-11-19 06:09:09 [main] INFO  c.k.p.i.config.MinIOConfig - MinIO client initialized successfully: http://localhost:9000
+2025-11-19 06:09:10 [main] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 4 endpoints beneath base path '/actuator'
+2025-11-19 06:09:10 [main] DEBUG o.s.s.c.a.a.c.AuthenticationConfiguration$DefaultPasswordEncoderAuthenticationManagerBuilder - No authenticationProviders and no parentAuthenticationManager defined. Returning null.
+2025-11-19 06:09:10 [main] DEBUG o.s.s.web.DefaultSecurityFilterChain - Will secure any request with filters: DisableEncodeUrlFilter, WebAsyncManagerIntegrationFilter, SecurityContextHolderFilter, HeaderWriterFilter, CorsFilter, CorsFilter, LogoutFilter, JwtAuthenticationFilter, RequestCacheAwareFilter, SecurityContextHolderAwareRequestFilter, AnonymousAuthenticationFilter, SessionManagementFilter, ExceptionTranslationFilter, AuthorizationFilter
+2025-11-19 06:09:11 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 5014 (http) with context path '/api'
+2025-11-19 06:09:11 [main] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5673]
+2025-11-19 06:09:11 [main] INFO  o.s.a.r.c.CachingConnectionFactory - Created new connection: rabbitConnectionFactory#6cee43d8:0/SimpleConnection@7c8c5798 [delegate=amqp://guest@127.0.0.1:5673/, localPort=65004]
+2025-11-19 06:09:11 [main] INFO  c.k.patrimoine.PatrimoineApplication - Started PatrimoineApplication in 13.613 seconds (process running for 14.385)
+2025-11-19 06:09:11 [main] WARN  o.s.c.events.SpringDocAppInitializer - SpringDoc /v3/api-docs endpoint is enabled by default. To disable it in production, set the property 'springdoc.api-docs.enabled=false'
+2025-11-19 06:09:11 [main] WARN  o.s.c.events.SpringDocAppInitializer - SpringDoc /swagger-ui.html endpoint is enabled by default. To disable it in production, set the property 'springdoc.swagger-ui.enabled=false'
+2025-11-19 06:09:34 [http-nio-5014-exec-1] INFO  o.a.c.c.C.[.[localhost].[/api] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-11-19 06:09:34 [http-nio-5014-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-11-19 06:09:34 [http-nio-5014-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 2 ms
+2025-11-19 06:09:34 [http-nio-5014-exec-1] DEBUG o.s.security.web.FilterChainProxy - Securing GET /swagger-ui/index.html
+2025-11-19 06:09:34 [http-nio-5014-exec-1] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-11-19 06:09:34 [http-nio-5014-exec-1] DEBUG o.s.security.web.FilterChainProxy - Secured GET /swagger-ui/index.html
+2025-11-19 06:09:34 [http-nio-5014-exec-2] DEBUG o.s.security.web.FilterChainProxy - Securing GET /swagger-ui/swagger-ui.css
+2025-11-19 06:09:34 [http-nio-5014-exec-3] DEBUG o.s.security.web.FilterChainProxy - Securing GET /swagger-ui/index.css
+2025-11-19 06:09:34 [http-nio-5014-exec-10] DEBUG o.s.security.web.FilterChainProxy - Securing GET /swagger-ui/swagger-ui-standalone-preset.js
+2025-11-19 06:09:34 [http-nio-5014-exec-8] DEBUG o.s.security.web.FilterChainProxy - Securing GET /swagger-ui/swagger-ui-bundle.js
+2025-11-19 06:09:34 [http-nio-5014-exec-2] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-11-19 06:09:34 [http-nio-5014-exec-3] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-11-19 06:09:34 [http-nio-5014-exec-6] DEBUG o.s.security.web.FilterChainProxy - Securing GET /swagger-ui/swagger-initializer.js
+2025-11-19 06:09:34 [http-nio-5014-exec-10] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-11-19 06:09:34 [http-nio-5014-exec-8] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-11-19 06:09:34 [http-nio-5014-exec-3] DEBUG o.s.security.web.FilterChainProxy - Secured GET /swagger-ui/index.css
+2025-11-19 06:09:34 [http-nio-5014-exec-2] DEBUG o.s.security.web.FilterChainProxy - Secured GET /swagger-ui/swagger-ui.css
+2025-11-19 06:09:34 [http-nio-5014-exec-10] DEBUG o.s.security.web.FilterChainProxy - Secured GET /swagger-ui/swagger-ui-standalone-preset.js
+2025-11-19 06:09:34 [http-nio-5014-exec-8] DEBUG o.s.security.web.FilterChainProxy - Secured GET /swagger-ui/swagger-ui-bundle.js
+2025-11-19 06:09:34 [http-nio-5014-exec-6] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-11-19 06:09:34 [http-nio-5014-exec-6] DEBUG o.s.security.web.FilterChainProxy - Secured GET /swagger-ui/swagger-initializer.js
+2025-11-19 06:09:34 [http-nio-5014-exec-7] DEBUG o.s.security.web.FilterChainProxy - Securing GET /v3/api-docs/swagger-config
+2025-11-19 06:09:34 [http-nio-5014-exec-7] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-11-19 06:09:34 [http-nio-5014-exec-7] DEBUG o.s.security.web.FilterChainProxy - Secured GET /v3/api-docs/swagger-config
+2025-11-19 06:09:34 [http-nio-5014-exec-4] DEBUG o.s.security.web.FilterChainProxy - Securing GET /swagger-ui/favicon-32x32.png
+2025-11-19 06:09:34 [http-nio-5014-exec-4] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-11-19 06:09:34 [http-nio-5014-exec-4] DEBUG o.s.security.web.FilterChainProxy - Secured GET /swagger-ui/favicon-32x32.png
+2025-11-19 06:09:34 [http-nio-5014-exec-9] DEBUG o.s.security.web.FilterChainProxy - Securing GET /v3/api-docs
+2025-11-19 06:09:34 [http-nio-5014-exec-9] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-11-19 06:09:34 [http-nio-5014-exec-9] DEBUG o.s.security.web.FilterChainProxy - Secured GET /v3/api-docs
+2025-11-19 06:09:35 [http-nio-5014-exec-9] INFO  o.s.api.AbstractOpenApiResource - Init duration for springdoc-openapi is: 714 ms
+2025-11-19 06:09:45 [http-nio-5014-exec-5] DEBUG o.s.security.web.FilterChainProxy - Securing POST /api/v1/auth/login
+2025-11-19 06:09:45 [http-nio-5014-exec-5] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-11-19 06:09:45 [http-nio-5014-exec-5] DEBUG o.s.security.web.FilterChainProxy - Secured POST /api/v1/auth/login
+2025-11-19 06:09:45 [http-nio-5014-exec-5] INFO  c.k.p.i.w.controllers.AuthController - Login attempt for email: admin@gmail.com
+2025-11-19 06:09:45 [http-nio-5014-exec-5] INFO  c.k.p.a.s.AuthenticationApplicationService - Authenticating user: admin@gmail.com
+2025-11-19 06:09:46 [http-nio-5014-exec-5] INFO  c.k.p.a.s.AuthenticationApplicationService - User authenticated successfully: admin@gmail.com
+2025-11-19 06:14:09 [http-nio-5014-exec-6] DEBUG o.s.security.web.FilterChainProxy - Securing POST /api/v1/heritage
+2025-11-19 06:14:09 [http-nio-5014-exec-6] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-11-19 06:14:09 [http-nio-5014-exec-6] ERROR c.k.p.i.w.s.JwtAuthenticationEntryPoint - Responding with unauthorized error. Message: Full authentication is required to access this resource
+2025-11-19 06:14:39 [http-nio-5014-exec-4] DEBUG o.s.security.web.FilterChainProxy - Securing POST /api/v1/heritage
+2025-11-19 06:14:39 [http-nio-5014-exec-4] DEBUG o.s.security.web.FilterChainProxy - Secured POST /api/v1/heritage
+2025-11-19 06:14:39 [http-nio-5014-exec-4] DEBUG o.s.s.a.m.AuthorizationManagerBeforeMethodInterceptor - Authorizing method invocation ReflectiveMethodInvocation: public org.springframework.http.ResponseEntity com.ktiservice.patrimoine.infrastructure.web.controllers.HeritageController.createHeritageSite(com.ktiservice.patrimoine.infrastructure.web.dto.heritage.CreateHeritageRequest,org.springframework.security.core.Authentication); target is of class [com.ktiservice.patrimoine.infrastructure.web.controllers.HeritageController]
+2025-11-19 06:14:39 [http-nio-5014-exec-4] DEBUG o.s.s.a.m.AuthorizationManagerBeforeMethodInterceptor - Failed to authorize ReflectiveMethodInvocation: public org.springframework.http.ResponseEntity com.ktiservice.patrimoine.infrastructure.web.controllers.HeritageController.createHeritageSite(com.ktiservice.patrimoine.infrastructure.web.dto.heritage.CreateHeritageRequest,org.springframework.security.core.Authentication); target is of class [com.ktiservice.patrimoine.infrastructure.web.controllers.HeritageController] with authorization manager org.springframework.security.authorization.ObservationAuthorizationManager@52cbdd2f and result ExpressionAuthorizationDecision [granted=false, expressionAttribute=hasRole('ADMINISTRATOR')]
+2025-11-19 06:14:39 [http-nio-5014-exec-4] WARN  c.k.p.i.e.GlobalExceptionHandler - Access denied: Access Denied
+2025-11-19 06:17:24 [http-nio-5014-exec-9] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/v1/heritage/top-rated?pageNumber=0&pageSize=20&sortBy=createdAt&sortDirection=DESC&pageSizeOrDefault=0&sortDirectionOrDefault=string&pageNumberOrDefault=0&sortByOrDefault=string
+2025-11-19 06:17:24 [http-nio-5014-exec-9] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/v1/heritage/top-rated?pageNumber=0&pageSize=20&sortBy=createdAt&sortDirection=DESC&pageSizeOrDefault=0&sortDirectionOrDefault=string&pageNumberOrDefault=0&sortByOrDefault=string
+2025-11-19 06:17:24 [http-nio-5014-exec-9] DEBUG c.k.p.a.s.HeritageApplicationService - Fetching top rated sites
+2025-11-19 06:19:02 [http-nio-5014-exec-1] DEBUG o.s.security.web.FilterChainProxy - Securing POST /api/v1/heritage
+2025-11-19 06:19:02 [http-nio-5014-exec-1] DEBUG o.s.security.web.FilterChainProxy - Secured POST /api/v1/heritage
+2025-11-19 06:19:02 [http-nio-5014-exec-1] DEBUG o.s.s.a.m.AuthorizationManagerBeforeMethodInterceptor - Authorizing method invocation ReflectiveMethodInvocation: public org.springframework.http.ResponseEntity com.ktiservice.patrimoine.infrastructure.web.controllers.HeritageController.createHeritageSite(com.ktiservice.patrimoine.infrastructure.web.dto.heritage.CreateHeritageRequest,org.springframework.security.core.Authentication); target is of class [com.ktiservice.patrimoine.infrastructure.web.controllers.HeritageController]
+2025-11-19 06:19:02 [http-nio-5014-exec-1] DEBUG o.s.s.a.m.AuthorizationManagerBeforeMethodInterceptor - Failed to authorize ReflectiveMethodInvocation: public org.springframework.http.ResponseEntity com.ktiservice.patrimoine.infrastructure.web.controllers.HeritageController.createHeritageSite(com.ktiservice.patrimoine.infrastructure.web.dto.heritage.CreateHeritageRequest,org.springframework.security.core.Authentication); target is of class [com.ktiservice.patrimoine.infrastructure.web.controllers.HeritageController] with authorization manager org.springframework.security.authorization.ObservationAuthorizationManager@52cbdd2f and result ExpressionAuthorizationDecision [granted=false, expressionAttribute=hasRole('ADMINISTRATOR')]
+2025-11-19 06:19:02 [http-nio-5014-exec-1] WARN  c.k.p.i.e.GlobalExceptionHandler - Access denied: Access Denied
+2025-11-19 06:40:46 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Waiting for workers to finish.
+2025-11-19 06:40:46 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] INFO  o.s.a.r.l.SimpleMessageListenerContainer - Successfully waited for workers to finish.
+2025-11-19 06:40:46 [SpringApplicationShutdownHook] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-11-19 06:40:47 [tomcat-shutdown] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-11-19 06:40:48 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-11-19 06:40:48 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2025-11-19 06:40:48 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2025-11-19 07:02:46 [main] INFO  c.k.patrimoine.PatrimoineApplication - Starting PatrimoineApplication using Java 17.0.17 with PID 28080 (C:\Users\ismaelTegou\Desktop\works_of_the_school\SEC_APP\patrimoine\target\classes started by Ismael Tegou in C:\Users\ismaelTegou\Desktop\works_of_the_school\SEC_APP\patrimoine)
+2025-11-19 07:02:46 [main] DEBUG c.k.patrimoine.PatrimoineApplication - Running with Spring Boot v3.5.7, Spring v6.2.12
+2025-11-19 07:02:46 [main] INFO  c.k.patrimoine.PatrimoineApplication - No active profile set, falling back to 1 default profile: "default"
+2025-11-19 07:02:49 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-11-19 07:02:49 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 123 ms. Found 6 JPA repository interfaces.
+2025-11-19 07:02:50 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 5014 (http)
+2025-11-19 07:02:50 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-11-19 07:02:50 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.48]
+2025-11-19 07:02:51 [main] INFO  o.a.c.c.C.[.[localhost].[/api] - Initializing Spring embedded WebApplicationContext
+2025-11-19 07:02:51 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 4358 ms
+2025-11-19 07:02:51 [main] DEBUG c.k.p.i.w.s.JwtAuthenticationFilter - Filter 'jwtAuthenticationFilter' configured for use
+2025-11-19 07:02:51 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-11-19 07:02:52 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@11a67420
+2025-11-19 07:02:52 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-11-19 07:02:52 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-11-19 07:02:53 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-11-19 07:02:55 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-11-19 07:02:56 [main] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-11-19 07:02:59 [main] INFO  c.k.p.i.config.MinIOConfig - MinIO client initialized successfully: http://localhost:9000
+2025-11-19 07:03:00 [main] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 4 endpoints beneath base path '/actuator'
+2025-11-19 07:03:00 [main] DEBUG o.s.s.c.a.a.c.AuthenticationConfiguration$DefaultPasswordEncoderAuthenticationManagerBuilder - No authenticationProviders and no parentAuthenticationManager defined. Returning null.
+2025-11-19 07:03:00 [main] DEBUG o.s.s.web.DefaultSecurityFilterChain - Will secure any request with filters: DisableEncodeUrlFilter, WebAsyncManagerIntegrationFilter, SecurityContextHolderFilter, HeaderWriterFilter, CorsFilter, CorsFilter, LogoutFilter, JwtAuthenticationFilter, RequestCacheAwareFilter, SecurityContextHolderAwareRequestFilter, AnonymousAuthenticationFilter, SessionManagementFilter, ExceptionTranslationFilter, AuthorizationFilter
+2025-11-19 07:03:01 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 5014 (http) with context path '/api'
+2025-11-19 07:03:01 [main] INFO  o.s.a.r.c.CachingConnectionFactory - Attempting to connect to: [localhost:5673]
+2025-11-19 07:03:01 [main] INFO  o.s.a.r.c.CachingConnectionFactory - Created new connection: rabbitConnectionFactory#13bf5c4f:0/SimpleConnection@4ca4995c [delegate=amqp://guest@127.0.0.1:5673/, localPort=53661]
+2025-11-19 07:03:01 [main] INFO  c.k.patrimoine.PatrimoineApplication - Started PatrimoineApplication in 16.599 seconds (process running for 17.556)
+2025-11-19 07:03:01 [main] WARN  o.s.c.events.SpringDocAppInitializer - SpringDoc /v3/api-docs endpoint is enabled by default. To disable it in production, set the property 'springdoc.api-docs.enabled=false'
+2025-11-19 07:03:01 [main] WARN  o.s.c.events.SpringDocAppInitializer - SpringDoc /swagger-ui.html endpoint is enabled by default. To disable it in production, set the property 'springdoc.swagger-ui.enabled=false'
+2025-11-19 07:05:58 [http-nio-5014-exec-1] INFO  o.a.c.c.C.[.[localhost].[/api] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-11-19 07:05:58 [http-nio-5014-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-11-19 07:05:58 [http-nio-5014-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2025-11-19 07:05:58 [http-nio-5014-exec-1] DEBUG o.s.security.web.FilterChainProxy - Securing POST /api/v1/auth/login
+2025-11-19 07:05:58 [http-nio-5014-exec-1] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-11-19 07:05:58 [http-nio-5014-exec-1] DEBUG o.s.security.web.FilterChainProxy - Secured POST /api/v1/auth/login
+2025-11-19 07:05:58 [http-nio-5014-exec-1] INFO  c.k.p.i.w.controllers.AuthController - Login attempt for email: admin@gmail.com
+2025-11-19 07:05:58 [http-nio-5014-exec-1] INFO  c.k.p.a.s.AuthenticationApplicationService - Authenticating user: admin@gmail.com
+2025-11-19 07:05:59 [http-nio-5014-exec-1] INFO  c.k.p.a.s.AuthenticationApplicationService - User authenticated successfully: admin@gmail.com
+2025-11-19 07:06:33 [http-nio-5014-exec-2] DEBUG o.s.security.web.FilterChainProxy - Securing POST /api/v1/heritage
+2025-11-19 07:06:33 [http-nio-5014-exec-2] DEBUG o.s.security.web.FilterChainProxy - Secured POST /api/v1/heritage
+2025-11-19 07:06:33 [http-nio-5014-exec-2] DEBUG o.s.s.a.m.AuthorizationManagerBeforeMethodInterceptor - Authorizing method invocation ReflectiveMethodInvocation: public org.springframework.http.ResponseEntity com.ktiservice.patrimoine.infrastructure.web.controllers.HeritageController.createHeritageSite(com.ktiservice.patrimoine.infrastructure.web.dto.heritage.CreateHeritageRequest,org.springframework.security.core.Authentication); target is of class [com.ktiservice.patrimoine.infrastructure.web.controllers.HeritageController]
+2025-11-19 07:06:33 [http-nio-5014-exec-2] DEBUG o.s.s.a.m.AuthorizationManagerBeforeMethodInterceptor - Authorized method invocation ReflectiveMethodInvocation: public org.springframework.http.ResponseEntity com.ktiservice.patrimoine.infrastructure.web.controllers.HeritageController.createHeritageSite(com.ktiservice.patrimoine.infrastructure.web.dto.heritage.CreateHeritageRequest,org.springframework.security.core.Authentication); target is of class [com.ktiservice.patrimoine.infrastructure.web.controllers.HeritageController]
+2025-11-19 07:06:33 [http-nio-5014-exec-2] INFO  c.k.p.i.w.c.HeritageController - Creating heritage site: Mount Cameroon
+2025-11-19 07:06:33 [http-nio-5014-exec-2] INFO  c.k.p.a.s.HeritageApplicationService - Creating heritage site: Mount Cameroon
+2025-11-19 07:06:33 [http-nio-5014-exec-2] DEBUG c.k.p.i.p.a.HeritageRepositoryAdapter - Heritage site saved: af4b4a9a-2e60-45bd-942b-2b35262eef74
+2025-11-19 07:06:33 [http-nio-5014-exec-2] DEBUG c.k.p.i.p.adapters.AuditService - Audit log saved: CREATE on HeritageNetwork (af4b4a9a-2e60-45bd-942b-2b35262eef74)
+2025-11-19 07:06:33 [http-nio-5014-exec-2] INFO  c.k.p.a.s.HeritageApplicationService - Heritage site created successfully: af4b4a9a-2e60-45bd-942b-2b35262eef74
+2025-11-19 07:06:59 [http-nio-5014-exec-6] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/v1/heritage/top-rated?pageNumber=0&pageSize=20&sortBy=createdAt&sortDirection=DESC&pageSizeOrDefault=0&sortDirectionOrDefault=string&pageNumberOrDefault=0&sortByOrDefault=string
+2025-11-19 07:06:59 [http-nio-5014-exec-6] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/v1/heritage/top-rated?pageNumber=0&pageSize=20&sortBy=createdAt&sortDirection=DESC&pageSizeOrDefault=0&sortDirectionOrDefault=string&pageNumberOrDefault=0&sortByOrDefault=string
+2025-11-19 07:06:59 [http-nio-5014-exec-6] DEBUG c.k.p.a.s.HeritageApplicationService - Fetching top rated sites
+2025-11-19 07:07:28 [http-nio-5014-exec-8] DEBUG o.s.security.web.FilterChainProxy - Securing POST /api/v1/reviews
+2025-11-19 07:07:28 [http-nio-5014-exec-8] DEBUG o.s.security.web.FilterChainProxy - Secured POST /api/v1/reviews
+2025-11-19 07:07:28 [http-nio-5014-exec-8] DEBUG o.s.s.a.m.AuthorizationManagerBeforeMethodInterceptor - Authorizing method invocation ReflectiveMethodInvocation: public org.springframework.http.ResponseEntity com.ktiservice.patrimoine.infrastructure.web.controllers.ReviewController.createReview(com.ktiservice.patrimoine.infrastructure.web.dto.reviews.CreateReviewRequest,org.springframework.security.core.Authentication); target is of class [com.ktiservice.patrimoine.infrastructure.web.controllers.ReviewController]
+2025-11-19 07:07:28 [http-nio-5014-exec-8] DEBUG o.s.s.a.m.AuthorizationManagerBeforeMethodInterceptor - Failed to authorize ReflectiveMethodInvocation: public org.springframework.http.ResponseEntity com.ktiservice.patrimoine.infrastructure.web.controllers.ReviewController.createReview(com.ktiservice.patrimoine.infrastructure.web.dto.reviews.CreateReviewRequest,org.springframework.security.core.Authentication); target is of class [com.ktiservice.patrimoine.infrastructure.web.controllers.ReviewController] with authorization manager org.springframework.security.authorization.ObservationAuthorizationManager@413dbd60 and result ExpressionAuthorizationDecision [granted=false, expressionAttribute=hasRole('TOURIST')]
+2025-11-19 07:07:28 [http-nio-5014-exec-8] WARN  c.k.p.i.e.GlobalExceptionHandler - Access denied: Access Denied
+2025-11-19 07:08:09 [http-nio-5014-exec-10] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/v1/users/profile
+2025-11-19 07:08:09 [http-nio-5014-exec-10] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/v1/users/profile
+2025-11-19 07:08:09 [http-nio-5014-exec-10] DEBUG o.s.s.a.m.AuthorizationManagerBeforeMethodInterceptor - Authorizing method invocation ReflectiveMethodInvocation: public org.springframework.http.ResponseEntity com.ktiservice.patrimoine.infrastructure.web.controllers.UserController.getCurrentUserProfile(org.springframework.security.core.Authentication); target is of class [com.ktiservice.patrimoine.infrastructure.web.controllers.UserController]
+2025-11-19 07:08:09 [http-nio-5014-exec-10] DEBUG o.s.s.a.m.AuthorizationManagerBeforeMethodInterceptor - Authorized method invocation ReflectiveMethodInvocation: public org.springframework.http.ResponseEntity com.ktiservice.patrimoine.infrastructure.web.controllers.UserController.getCurrentUserProfile(org.springframework.security.core.Authentication); target is of class [com.ktiservice.patrimoine.infrastructure.web.controllers.UserController]
+2025-11-19 07:08:09 [http-nio-5014-exec-10] INFO  c.k.p.i.w.controllers.UserController - Fetching profile for user: 2591eb99-3d0c-4f82-8bee-7cd2843d188a
+2025-11-19 07:08:09 [http-nio-5014-exec-10] DEBUG c.k.p.a.s.UserApplicationService - Fetching user by ID: 2591eb99-3d0c-4f82-8bee-7cd2843d188a
+2025-11-19 08:57:53 [HikariPool-1:housekeeper] WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=30m29s312ms17탎700ns).
+2025-11-19 09:02:34 [HikariPool-1:housekeeper] WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=4m56s990ms721탎300ns).
+2025-11-19 09:18:27 [HikariPool-1:housekeeper] WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2m6s739ms155탎500ns).
+2025-11-19 09:54:52 [HikariPool-1:housekeeper] WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=6m24s356ms795탎).
+2025-11-19 11:26:29 [HikariPool-1:housekeeper] WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=22m5s85ms770탎600ns).
+2025-11-19 15:02:17 [HikariPool-1:housekeeper] WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=3h32m39s813ms675탎200ns).
