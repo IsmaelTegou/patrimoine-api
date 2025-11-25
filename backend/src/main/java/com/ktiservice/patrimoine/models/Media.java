@@ -1,10 +1,9 @@
 package com.ktiservice.patrimoine.models;
 
+import com.fasterxml.jackson.core.JsonToken;
 import com.ktiservice.patrimoine.enums.MediaType;
 import com.ktiservice.patrimoine.exceptions.ValidationException;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.UUID;
 
@@ -14,6 +13,8 @@ import java.util.UUID;
  */
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
+@Builder
 @EqualsAndHashCode(callSuper = true)
 public class Media extends BaseEntity {
 
@@ -56,6 +57,8 @@ public class Media extends BaseEntity {
         media.versionNumber = 1;
         return media;
     }
+
+
 
     /**
      * Increment version for versioning support.

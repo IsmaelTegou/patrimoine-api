@@ -1,5 +1,6 @@
 package com.ktiservice.patrimoine.entities;
 
+import com.ktiservice.patrimoine.models.VisitHistory;
 import lombok.*;
 import java.util.UUID;
 import jakarta.persistence.*;
@@ -11,6 +12,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @Getter
 @Setter
+@Builder
 @AllArgsConstructor
 @Table(name="visitHistory")
 @Entity
@@ -20,10 +22,6 @@ public class VisitHistoryJpaEntity {
     @GenericGenerator(name="UUID", strategy = "org.hibernate.id.UUIDGenerator")
     @Column(name="id",columnDefinition = "UUID")
     private UUID id;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="id_history")
-    private ReviewJpaEntity history;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="id_tourist")
@@ -37,9 +35,34 @@ public class VisitHistoryJpaEntity {
     @Column(name="date_visite", nullable=false, columnDefinition="TIMESTAMP")
     private LocalDateTime dateVisite;
     
-    @Column(name="duree_visite", nullable=false)
-    private Integer dureeVisite;
+    @Column(name="visit_duration", nullable=false)
+    private Integer visitDuration;
 
-    @Column(name="source_Acces", nullable=false)
-    private String sourceAcces;
+    @Column(name="access_Source", nullable=false)
+    private String accessSource;
+
+    public VisitHistory toDomainEntity() {
+        return VisitHistory.builder()
+                .userId(this.tourist != null ? this.tourist.getId() : null)
+                .siteId(this.site != null ? this.site.getId() : null)
+                .visitDuration(this.visitDuration)
+                .accessSource(this.accessSource)
+                .build();
+    }
+
+    public static VisitHistoryJpaEntity fromDomainEntity(
+            VisitHistory domain,
+            TouristJpaEntity touristEntity,
+            HeritageNetworkJpaEntity siteEntity
+    ) {
+        return VisitHistoryJpaEntity.builder()
+                .id(domain.getId())
+                .tourist(touristEntity)
+                .site(siteEntity)
+                .visitDuration(domain.getVisitDuration())
+                .accessSource(domain.getAccessSource())
+                .build();
+    }
+
 }
+

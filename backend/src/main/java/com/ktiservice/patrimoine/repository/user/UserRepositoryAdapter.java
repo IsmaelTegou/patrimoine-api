@@ -6,6 +6,7 @@ import com.ktiservice.patrimoine.models.User;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -35,6 +36,14 @@ public class UserRepositoryAdapter implements UserRepository {
     public Optional<User> findById(UUID userId) {
         return userJpaRepository.findById(userId)
                 .map(UserJpaEntity::toDomainEntity);
+    }
+
+    @Override
+    public List<User> findAll() {
+        return userJpaRepository.findAll()
+                .stream()
+                .map(UserJpaEntity::toDomainEntity)
+                .toList(); // Java 16+, sinon collect(Collectors.toList())
     }
 
     @Override

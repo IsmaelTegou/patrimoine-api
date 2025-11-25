@@ -127,7 +127,7 @@ public class UserJpaEntity implements UserDetails {
     /**
      * Create from domain User entity.
      */
-    public static UserJpaEntity fromDomainEntity(com.ktiservice.patrimoine.models.User user) {
+     public static UserJpaEntity fromDomainEntity(com.ktiservice.patrimoine.models.User user) {
         return UserJpaEntity.builder()
                 .id(user.getId())
                 .email(user.getEmail())

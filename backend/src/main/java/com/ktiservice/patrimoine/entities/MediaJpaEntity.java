@@ -73,38 +73,35 @@ public class MediaJpaEntity {
         }
     }
 
-    /**
-     * Convert JPA entity to domain entity.
-     */
     public Media toDomainEntity() {
-        var domain = new Media();
-        domain.setId(this.id);
-        domain.setHeritageNetworkId(this.heritageNetworkId);
-        domain.setMediaType(this.mediaType);
-        domain.setFileName(this.fileName);
-        domain.setMinioPath(this.minioPath);
-        domain.setFileSize(this.fileSize);
-        domain.setDescription(this.description);
-        domain.setAccessUrl(this.accessUrl);
-        domain.setVersionNumber(this.versionNumber);
-        domain.setCreatedAt(this.uploadedAt);
-        return domain;
-    }
-
-    /**
-     * Create JPA entity from domain entity.
-     */
-    public static MediaJpaEntity fromDomainEntity(Media domain) {
-        return MediaJpaEntity.builder()
-                .id(domain.getId())
-                .heritageNetworkId(domain.getHeritageNetworkId())
-                .mediaType(domain.getMediaType())
-                .fileName(domain.getFileName())
-                .minioPath(domain.getMinioPath())
-                .fileSize(domain.getFileSize())
-                .description(domain.getDescription())
-                .accessUrl(domain.getAccessUrl())
-                .versionNumber(domain.getVersionNumber())
+        return Media.builder()
+                .heritageNetworkId(this.heritageNetworkId)
+                .mediaType(this.mediaType)
+                .fileName(this.fileName)
+                .minioPath(this.minioPath)
+                .fileSize(this.fileSize)
+                .description(this.description)
+                .accessUrl(this.accessUrl)
+                .versionNumber(this.versionNumber)
                 .build();
     }
+
+    public static MediaJpaEntity fromDomainEntity(Media media) {
+        if (media == null) {
+            return null;
+        }
+
+        return MediaJpaEntity.builder()
+                .id(media.getId() != null ? media.getId() : UUID.randomUUID())
+                .heritageNetworkId(media.getHeritageNetworkId())
+                .mediaType(media.getMediaType())
+                .fileName(media.getFileName())
+                .minioPath(media.getMinioPath())
+                .fileSize(media.getFileSize())
+                .description(media.getDescription())
+                .accessUrl(media.getAccessUrl())
+                .versionNumber(media.getVersionNumber())
+                .build();
+    }
+
 }

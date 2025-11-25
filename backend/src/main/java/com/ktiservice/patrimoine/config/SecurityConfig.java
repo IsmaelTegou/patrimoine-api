@@ -35,19 +35,20 @@ public class SecurityConfig {
                     .cors(cors -> cors.configurationSource(corsConfigurationSource()))
                     .authorizeHttpRequests(r -> r
                             .requestMatchers(
-                                    "/api/v1/auth/**",
+                                    "/api/V1/auth/**",
                                     "/v3/api-docs/**",
                                     "/swagger-resources/**",
                                     "/swagger-ui/**",
-                                    "/swagger-ui.html"
+                                    "/swagger-ui.html",
+                                    "/api/V1/users" // <-- autoriser la création d'utilisateur
                             ).permitAll()
-                            .requestMatchers("/api/v1/**").authenticated()
-                            .anyRequest().denyAll())
+                            .requestMatchers("/api/V1/**").authenticated()
+                            .anyRequest().permitAll())
                     .sessionManagement(s -> s.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                     .authenticationProvider(authenticationProvider)
                     .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
                     .logout(e -> e
-                            .logoutUrl("/api/v1/auth/logout")
+                            .logoutUrl("/api/V1/auth/logout")
                             .logoutSuccessHandler((req, res, auth) -> SecurityContextHolder.clearContext())
                     );
 
@@ -67,4 +68,6 @@ public class SecurityConfig {
         source.registerCorsConfiguration("/**", configuration);
         return source;
     }
+
+
 }
